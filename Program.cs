@@ -59,7 +59,6 @@ namespace TelegramVPNBot
             Console.ReadKey();
             cts.Cancel();
 
-            // Ожидание завершения фоновой задачи
             await cleanupTask;
 
             Console.WriteLine("Application stopped.");
