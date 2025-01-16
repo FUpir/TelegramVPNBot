@@ -1,0 +1,45 @@
+﻿using MongoDB.Bson;
+using TelegramVPNBot.Helpers;
+using TelegramVPNBot.Interfaces;
+using TelegramVPNBot.Models;
+using User = Telegram.Bot.Types.User;
+
+namespace TelegramVPNBot.Services
+{
+    public class AuthorizationService(IUserRepository userRepository) : IAuthorizationService
+    {
+        public async Task<Models.User> GetAuthorizedUserAsync(User userChat)
+        {
+            var user = await userRepository.GetUserByTelegramIdAsync(userChat.Id);
+
+            if (user == null)
+            {
+                user = new Models.User()
+                {
+                    TelegramId = userChat.Id,
+                    Username = userChat.Username,
+                    CreatedAtUtc = DateTime.UtcNow,
+                    FullName = userChat.FirstName + (" " + userChat.LastName),
+                    Settings = new Settings
+                    {
+                        Language = LanguageHelper.GetLanguage(userChat.LanguageCode)
+                    }
+                };
+
+                await userRepository.CreateUserAsync(user);
+            }
+
+            return user;
+        }
+
+        public async Task UpdateSubscriptionEndDateAsync(ObjectId id, DateTime? newEndDate)
+        {
+              await userRepository.UpdateSubscriptionEndDateAsync(id, newEndDate);
+        }
+
+        public async Task UpdateOutlineKeyAsync(ObjectId id, string? newOutlineKey)
+        {
+            await userRepository.UpdateOutlineKeyAsync(id, newOutlineKey);
+        }
+    }
+}

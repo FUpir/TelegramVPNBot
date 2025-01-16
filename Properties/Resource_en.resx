@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessImg" xml:space="preserve">
+    <value>https://lh3.googleusercontent.com/fife/ALs6j_FJDmdxtUSbAuLjXAoSOPDmeA_UVBBCIvIRayVbSJmG3JHp6enlttqnYcQtPTtvYJIOniygzFASeWibYjD-GxkpGny2gTAqpCVo4el25n9hK6Jx8ZtWlbCp7XCYuh-tkGle7B1ERSbDiHa4RPBAmQFFDnBe_yktSWEenGYeoziIkYP3DPOsB0J81BKY25_Tq4AhNZLvqdC924Nd-XHeKRjniKiA2dp1ToaQsV0JdzvLERFh_r_0eVaDvv_BwV0FsDhTOoCD8FwumruyVwcm5Z2RClFB50xww469q0VX2UuEzrUo0q1NN5XEA6j5zIgcJh-0MzLpJkhJlZamSdfqAQDqAGw7HOJ939ZVJ10N_DaWFq9ViXnJdJBuYJRGH_nBJzk0xQtGD3463_DHx_1NcOzUxWXu1uz_RVWfMEfyPQPQn22jAWVox_K1j5FskQZo5-PxIlVMbjtFWvNKnd-mdIuSeAwOBTSFNeNJqf_fYaOLIHoRhULhPB1BI8TkBTOBR4gxnE31n5rifo51bQ4AGx13rFzozIYP5ic3aDYRcB5Ei165pfreqrT-8QrTUBNo3aUyWVcuiwGaM34DdDKMi6dBloewDdgDQ07tAMwrbyEHEBfIrsZot-RAoeki1HeTKsg0iW4IeYTmTjiRlqsgva9F1GDCrMjIaWVtOg_x4XFoEWKN4vEhVak3f2T-5I5YtGeLVPP6ZOyB7hyF0RzZ7rcvJwodKTBI-HkcLY5d6cr3XVLb6g0qqK6uRxCOkbWgOKER7Y-urRaOuDgVPJt1VPmonLo4nlbK1Qi7-T6NB0uImUPyWxQX0OvRZtNJSm6oJnmRaFO5T_AgUEXvEONVgPmETDsUBfEy4VhL9pLIQmQSBC8jAawKrXHxvTeIykNMiMpEcptPnB8L4QAaGo9hA21K_Vz02EJvkbhNk5LNJ_7womZXCjkOlor40NA720gdfoDEBgzxMuj4U_q5Q-KJPhjW4H8IG1eG9As6P_9BsTQJPW54mCCFszoIClGq2mqdNPRce7R6NI8u456W5Gx-erF7-631DA05WjR7rjBwK9NiGmhcVxrskyPlg1O1Y5bMpZg8hoiL4mhGLeIOgnDHqtZI5LUrHGkMn2CcfXej-rBrJ3CuM7oHovtMYo_agXcMw0eNBkfQdz1p07EAKZ9hfb8HoZIJohgsoW377xbRuILckReyzY7BPwALMnZ3HPWT2gw9_20taxUOpj2f79Iv2VxoE86V3kpAaIg2XGQpzZZtgq24DQHTSTcUl9tVi3Rxn_dNUFOz2QpgdigTajtkJylOiu6RZWorUnnvOLMUrBYhYuRPov2LuN3GQaXSq8pG-a7qewF0l1IbJriINAsuCCl41scaSE5Tgcu7akX48WnZeu9m8gRfdRamNWUWuM4l3h7wnhEJoS_6mI7Vo7kmFDGxtmGQYpt2RV0QT5mh7kgOihQiqz3d_Om6Io5-3_RpEsJmxomZJs0a4gIUsp8OJIlrpGQ5Kfjy67qt1D3csc6xy3H74JhOp9y0AAHinT9508bm9_xJVK5q8uhMhMuWp52kQaPtObgHq8BkXwYV5lVLUBNs1dqzTSkN14Dkm67nsM0qUZ32fz9C8EF5ySP-V4Ah_KswOVl0yX56vB3vBspE3ck1DUAn1_nIWmRfT9ZC0qlIbgGcWYs2YWgrNIvriQ9kyHX_Mei6O9ZAjbn_RkT1eXnZxaC8oLcsTOowWBibXD901hRHXqADfGKSlfx2e6h8_CKaY4AHhaE0w1Bqq5xYqoQ0sYVYnL4i1_ki</value>
+  </data>
+  <data name="AccessMessage" xml:space="preserve">
+    <value>🔑 **Доступ к VPN**
+
+Ваш доступ к VPN включает:
+- 🌍 Серверы по всему миру для анонимного и безопасного соединения.
+- 🚀 Высокая скорость соединения без ограничений.
+- 🛡️ Защита ваших данных и конфиденциальности.</value>
+  </data>
+  <data name="KeyboardAccess" xml:space="preserve">
+    <value>1|6|12|Назад</value>
+  </data>
+  <data name="KeyboardProfile" xml:space="preserve">
+    <value>Назад</value>
+  </data>
+  <data name="KeyboardStart" xml:space="preserve">
+    <value>Subscribe|Profile|Settings|About Us|Support</value>
+  </data>
+  <data name="ProfileMessage" xml:space="preserve">
+    <value>📌 **Имя:** {0}  
+🔗 **Имя пользователя:** @{1}  
+🆔 **ID Telegram:** {2}  
+🕒 **Дата регистрации:** {3}
+
+📅 **Статус подписки:** {4}  
+⏳ **Окончание подписки:** {5}</value>
+  </data>
+  <data name="StartImg" xml:space="preserve">
+    <value>https://lh3.googleusercontent.com/fife/ALs6j_FJDmdxtUSbAuLjXAoSOPDmeA_UVBBCIvIRayVbSJmG3JHp6enlttqnYcQtPTtvYJIOniygzFASeWibYjD-GxkpGny2gTAqpCVo4el25n9hK6Jx8ZtWlbCp7XCYuh-tkGle7B1ERSbDiHa4RPBAmQFFDnBe_yktSWEenGYeoziIkYP3DPOsB0J81BKY25_Tq4AhNZLvqdC924Nd-XHeKRjniKiA2dp1ToaQsV0JdzvLERFh_r_0eVaDvv_BwV0FsDhTOoCD8FwumruyVwcm5Z2RClFB50xww469q0VX2UuEzrUo0q1NN5XEA6j5zIgcJh-0MzLpJkhJlZamSdfqAQDqAGw7HOJ939ZVJ10N_DaWFq9ViXnJdJBuYJRGH_nBJzk0xQtGD3463_DHx_1NcOzUxWXu1uz_RVWfMEfyPQPQn22jAWVox_K1j5FskQZo5-PxIlVMbjtFWvNKnd-mdIuSeAwOBTSFNeNJqf_fYaOLIHoRhULhPB1BI8TkBTOBR4gxnE31n5rifo51bQ4AGx13rFzozIYP5ic3aDYRcB5Ei165pfreqrT-8QrTUBNo3aUyWVcuiwGaM34DdDKMi6dBloewDdgDQ07tAMwrbyEHEBfIrsZot-RAoeki1HeTKsg0iW4IeYTmTjiRlqsgva9F1GDCrMjIaWVtOg_x4XFoEWKN4vEhVak3f2T-5I5YtGeLVPP6ZOyB7hyF0RzZ7rcvJwodKTBI-HkcLY5d6cr3XVLb6g0qqK6uRxCOkbWgOKER7Y-urRaOuDgVPJt1VPmonLo4nlbK1Qi7-T6NB0uImUPyWxQX0OvRZtNJSm6oJnmRaFO5T_AgUEXvEONVgPmETDsUBfEy4VhL9pLIQmQSBC8jAawKrXHxvTeIykNMiMpEcptPnB8L4QAaGo9hA21K_Vz02EJvkbhNk5LNJ_7womZXCjkOlor40NA720gdfoDEBgzxMuj4U_q5Q-KJPhjW4H8IG1eG9As6P_9BsTQJPW54mCCFszoIClGq2mqdNPRce7R6NI8u456W5Gx-erF7-631DA05WjR7rjBwK9NiGmhcVxrskyPlg1O1Y5bMpZg8hoiL4mhGLeIOgnDHqtZI5LUrHGkMn2CcfXej-rBrJ3CuM7oHovtMYo_agXcMw0eNBkfQdz1p07EAKZ9hfb8HoZIJohgsoW377xbRuILckReyzY7BPwALMnZ3HPWT2gw9_20taxUOpj2f79Iv2VxoE86V3kpAaIg2XGQpzZZtgq24DQHTSTcUl9tVi3Rxn_dNUFOz2QpgdigTajtkJylOiu6RZWorUnnvOLMUrBYhYuRPov2LuN3GQaXSq8pG-a7qewF0l1IbJriINAsuCCl41scaSE5Tgcu7akX48WnZeu9m8gRfdRamNWUWuM4l3h7wnhEJoS_6mI7Vo7kmFDGxtmGQYpt2RV0QT5mh7kgOihQiqz3d_Om6Io5-3_RpEsJmxomZJs0a4gIUsp8OJIlrpGQ5Kfjy67qt1D3csc6xy3H74JhOp9y0AAHinT9508bm9_xJVK5q8uhMhMuWp52kQaPtObgHq8BkXwYV5lVLUBNs1dqzTSkN14Dkm67nsM0qUZ32fz9C8EF5ySP-V4Ah_KswOVl0yX56vB3vBspE3ck1DUAn1_nIWmRfT9ZC0qlIbgGcWYs2YWgrNIvriQ9kyHX_Mei6O9ZAjbn_RkT1eXnZxaC8oLcsTOowWBibXD901hRHXqADfGKSlfx2e6h8_CKaY4AHhaE0w1Bqq5xYqoQ0sYVYnL4i1_ki</value>
+  </data>
+  <data name="StartMessage" xml:space="preserve">
+    <value>👋 Welcome to VPN Bot, your trusted partner for secure and anonymous internet access.
+
+Features:
+1. Protect your data with advanced encryption technologies.
+2. High-speed connection to servers around the world.
+3. Complete privacy without compromises.
+
+What you can do:
+1. Subscribe to the VPN service.
+2. Get setup instructions.
+3. Manage your account and access keys.</value>
+    <comment>Start message text</comment>
+  </data>
+  <data name="SubscriptionStatusNone" xml:space="preserve">
+    <value>нет активной подписки</value>
+  </data>
+  <data name="SubscriptionStatusExpired" xml:space="preserve">
+    <value>подписка просрочена</value>
+  </data>
+  <data name="SubscriptionStatusActive" xml:space="preserve">
+    <value>подписка активна</value>
+  </data>
+  <data name="PaymentMessage" xml:space="preserve">
+    <value>Вы выбрали подписку на **{0} месяцев**. Стоимость подписки: **${1}**.
+
+🔑 После оплаты вы получите персональный ключ доступа и инструкции по настройке VPN.</value>
+  </data>
+  <data name="SuccessMessage" xml:space="preserve">
+    <value>🎉 Спасибо за покупку! Ваша подписка на **{0}** успешно активирована.
+
+🔑 Доступ к VPN:
+- Вы можете начать пользоваться VPN прямо сейчас.
+- Ваш доступ будет действителен до **{1}**.
+
+Если у вас возникли вопросы, пожалуйста, свяжитесь с нашей поддержкой.</value>
+  </data>
+</root>
