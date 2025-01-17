@@ -57,12 +57,16 @@ namespace TelegramVPNBot
 
             var cleanupTask = cleanupService.StartAsync(cts.Token);
 
-            Console.ReadKey();
-            cts.Cancel();
+            var waitForShutdown = new TaskCompletionSource();
+            AppDomain.CurrentDomain.ProcessExit += (_, _) => waitForShutdown.TrySetResult();
+            Console.CancelKeyPress += (_, _) => waitForShutdown.TrySetResult();
 
+            await waitForShutdown.Task;
+
+            cts.Cancel();
             await cleanupTask;
 
-            Console.WriteLine("Application stopped."); 
+            Console.WriteLine("Application stopped.");
         }
     }
 }
