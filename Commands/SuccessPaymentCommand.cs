@@ -1,5 +1,6 @@
 ﻿using Telegram.Bot;
 using Telegram.Bot.Types;
+using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.ReplyMarkups;
 using TelegramVPNBot.Helpers;
 using TelegramVPNBot.Interfaces;
@@ -22,6 +23,8 @@ namespace TelegramVPNBot.Commands
             var messageTxt = LanguageHelper.GetLocalizedMessage(user.Settings.Language, "SuccessMessage");
             var startImg = LanguageHelper.GetLocalizedMessage(user.Settings.Language, "AccessImg");
             var menuKeys = LanguageHelper.GetLocalizedMessage(user.Settings.Language, "KeyboardAccess").Split('|');
+
+            var message = string.Format(messageTxt, subMonths, user.SubscriptionEndDateUtc);
 
             await authorizationService.UpdateSubscriptionEndDateAsync(
                 user.Id,
@@ -49,7 +52,7 @@ namespace TelegramVPNBot.Commands
             });
 
             await botClient.SendPhoto(user.TelegramId, InputFile.FromUri(startImg), caption: messageTxt,
-                replyMarkup: inlineKeyboard);
+                replyMarkup: inlineKeyboard,parseMode:ParseMode.MarkdownV2);
         }
     }
 }

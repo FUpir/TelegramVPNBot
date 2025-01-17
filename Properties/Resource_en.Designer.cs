@@ -89,7 +89,7 @@ namespace TelegramVPNBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Monthly|6 Months|12 Months|🎁 Trial Period|🔙 Back.
+        ///   Looks up a localized string similar to Monthly|6 Months|12 Months|🎁 Trial Period|⬅️ Back.
         /// </summary>
         internal static string KeyboardAccess {
             get {
@@ -98,7 +98,16 @@ namespace TelegramVPNBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 📄 My Subscriptions|Назад.
+        ///   Looks up a localized string similar to Pay {0}⭐|⬅️ Back.
+        /// </summary>
+        internal static string KeyboardPayment {
+            get {
+                return ResourceManager.GetString("KeyboardPayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 📄 My Subscriptions|⬅️ Back.
         /// </summary>
         internal static string KeyboardProfile {
             get {
@@ -116,7 +125,7 @@ namespace TelegramVPNBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to How to Active?|🔙 Back.
+        ///   Looks up a localized string similar to How to Active?|⬅️ Back.
         /// </summary>
         internal static string KeyboardSubscription {
             get {
@@ -125,9 +134,18 @@ namespace TelegramVPNBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Вы выбрали подписку на **{0} месяцев**. Стоимость подписки: **${1}**.
+        ///   Looks up a localized string similar to 📄 My Subscriptions|⬅️ Back.
+        /// </summary>
+        internal static string KeyboardSuccess {
+            get {
+                return ResourceManager.GetString("KeyboardSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have chosen a {0}-month subscription. The subscription cost is {1}⭐.
         ///
-        ///🔑 После оплаты вы получите персональный ключ доступа и инструкции по настройке VPN..
+        ///🔑 After payment, you will receive a personal access key and instructions for setting up the VPN..
         /// </summary>
         internal static string PaymentMessage {
             get {
@@ -177,12 +195,12 @@ namespace TelegramVPNBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 🔒 Статус: {0}
-        ///⏳ Действует до: {1}
+        ///   Looks up a localized string similar to 🔒 Status: {0}
+        ///⏳ Valid until: {1}
         ///
-        ///📊 Использовано трафика: {2}
+        ///📊 Traffic used: {2}
         ///
-        ///🔑 Ваш ключ доступа:  
+        ///🔑 Your access key:
         ///{3}.
         /// </summary>
         internal static string SubscriptionMessage {
@@ -219,13 +237,13 @@ namespace TelegramVPNBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 🎉 Спасибо за покупку! Ваша подписка на **{0}** успешно активирована.
+        ///   Looks up a localized string similar to 🎉 Thank you for your purchase! Your {0} subscription has been successfully activated.
         ///
-        ///🔑 Доступ к VPN:
-        ///- Вы можете начать пользоваться VPN прямо сейчас.
-        ///- Ваш доступ будет действителен до **{1}**.
+        ///🔑 VPN Access:
         ///
-        ///Если у вас возникли вопросы, пожалуйста, свяжитесь с нашей поддержкой..
+        ///You can start using the VPN right away.
+        ///Your access will be valid until {1}.
+        ///If you have any questions, please contact our support team..
         /// </summary>
         internal static string SuccessMessage {
             get {

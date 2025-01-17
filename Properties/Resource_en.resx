@@ -125,13 +125,19 @@
 We offer various options to ensure you get VPN access tailored to your needs.</value>
   </data>
   <data name="KeyboardAccess" xml:space="preserve">
-    <value>Monthly|6 Months|12 Months|🎁 Trial Period|🔙 Back</value>
+    <value>Monthly|6 Months|12 Months|🎁 Trial Period|⬅️ Back</value>
+  </data>
+  <data name="KeyboardSuccess" xml:space="preserve">
+    <value>📄 My Subscriptions|⬅️ Back</value>
   </data>
   <data name="KeyboardProfile" xml:space="preserve">
-    <value>📄 My Subscriptions|Назад</value>
+    <value>📄 My Subscriptions|⬅️ Back</value>
+  </data>
+  <data name="KeyboardPayment" xml:space="preserve">
+    <value>Pay {0}⭐|⬅️ Back</value>
   </data>
   <data name="KeyboardSubscription" xml:space="preserve">
-    <value>How to Active?|🔙 Back</value>
+    <value>How to Active?|⬅️ Back</value>
   </data>
   <data name="KeyboardStart" xml:space="preserve">
     <value>Subscribe|Profile|Settings|About Us|Support</value>
@@ -170,26 +176,26 @@ Start your journey to internet freedom with us!</value>
     <value>✅ Subscription is active</value>
   </data>
   <data name="PaymentMessage" xml:space="preserve">
-    <value>Вы выбрали подписку на **{0} месяцев**. Стоимость подписки: **${1}**.
+    <value>You have chosen a {0}-month subscription. The subscription cost is {1}⭐.
 
-🔑 После оплаты вы получите персональный ключ доступа и инструкции по настройке VPN.</value>
+🔑 After payment, you will receive a personal access key and instructions for setting up the VPN.</value>
   </data>
   <data name="SuccessMessage" xml:space="preserve">
-    <value>🎉 Спасибо за покупку! Ваша подписка на **{0}** успешно активирована.
+    <value>🎉 Thank you for your purchase! Your {0} subscription has been successfully activated.
 
-🔑 Доступ к VPN:
-- Вы можете начать пользоваться VPN прямо сейчас.
-- Ваш доступ будет действителен до **{1}**.
+🔑 VPN Access:
 
-Если у вас возникли вопросы, пожалуйста, свяжитесь с нашей поддержкой.</value>
+You can start using the VPN right away.
+Your access will be valid until {1}.
+If you have any questions, please contact our support team.</value>
   </data>
   <data name="SubscriptionMessage" xml:space="preserve">
-    <value>🔒 Статус: {0}
-⏳ Действует до: {1}
+    <value>🔒 Status: {0}
+⏳ Valid until: {1}
 
-📊 Использовано трафика: {2}
+📊 Traffic used: {2}
 
-🔑 Ваш ключ доступа:  
+🔑 Your access key:
 {3}</value>
   </data>
   <data name="ActiveTutorial" xml:space="preserve">

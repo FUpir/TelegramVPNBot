@@ -12,7 +12,7 @@ namespace TelegramVPNBot.Commands
     public class PaymentCommand(IAuthorizationService authorizationService) : ICommand
     {
         private const int MonthPrice = 5;
-        private int _totalPrice = 0;
+        private int _totalPrice;
         private int _monthsCount;
         public async Task ExecuteAsync(Update update, ITelegramBotClient botClient)
         {
@@ -35,7 +35,7 @@ namespace TelegramVPNBot.Commands
 
             var startMessage = LanguageHelper.GetLocalizedMessage(user.Settings.Language, "PaymentMessage");
             var startImg = LanguageHelper.GetLocalizedMessage(user.Settings.Language, "AccessImg");
-            var menuKeys = LanguageHelper.GetLocalizedMessage(user.Settings.Language, "KeyboardProfile").Split('|');
+            var menuKeys = LanguageHelper.GetLocalizedMessage(user.Settings.Language, "KeyboardPayment").Split('|');
 
             var status = SubscriptionStatusHelper.GetSubscriptionStatusMessage(user.SubscriptionEndDateUtc, user.Settings.Language);
 
@@ -55,14 +55,14 @@ namespace TelegramVPNBot.Commands
             {
                 new[]
                 {
-                    new InlineKeyboardButton($"{_totalPrice}⭐")
+                    new InlineKeyboardButton($"{string.Format(menuKeys[0],_totalPrice)}")
                     {
                         Url = link
                     }
                 },
                 new[]
                 {
-                    new InlineKeyboardButton($"⬅️{menuKeys[0]}")
+                    new InlineKeyboardButton($"{menuKeys[1]}")
                     {
                         CallbackData = "access"
                     }

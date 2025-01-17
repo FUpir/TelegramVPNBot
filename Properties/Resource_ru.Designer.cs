@@ -61,7 +61,62 @@ namespace TelegramVPNBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Оформить Подписку|Профиль|Настройки|О Нас|Подержка.
+        ///   Looks up a localized string similar to https://lh3.googleusercontent.com/fife/ALs6j_FJDmdxtUSbAuLjXAoSOPDmeA_UVBBCIvIRayVbSJmG3JHp6enlttqnYcQtPTtvYJIOniygzFASeWibYjD-GxkpGny2gTAqpCVo4el25n9hK6Jx8ZtWlbCp7XCYuh-tkGle7B1ERSbDiHa4RPBAmQFFDnBe_yktSWEenGYeoziIkYP3DPOsB0J81BKY25_Tq4AhNZLvqdC924Nd-XHeKRjniKiA2dp1ToaQsV0JdzvLERFh_r_0eVaDvv_BwV0FsDhTOoCD8FwumruyVwcm5Z2RClFB50xww469q0VX2UuEzrUo0q1NN5XEA6j5zIgcJh-0MzLpJkhJlZamSdfqAQDqAGw7HOJ939ZVJ10N_DaWFq9ViXnJdJBuYJRGH_nBJzk0xQtGD3463_DHx_1NcOzUxWXu1uz_RVWfMEfyPQPQn22jAWVox_K1j5FskQZo5-PxIlVMbjtFWvNKnd-md [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string AccessImg {
+            get {
+                return ResourceManager.GetString("AccessImg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Выберите вашу подписку 💳  
+        ///Мы предлагаем различные варианты, чтобы вы могли получить доступ к VPN, который подходит именно вам..
+        /// </summary>
+        internal static string AccessMessage {
+            get {
+                return ResourceManager.GetString("AccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://telegra.ph/Tutorial-How-to-Set-Up-and-Use-Outline-VPN-with-an-Access-Key-01-17.
+        /// </summary>
+        internal static string ActiveTutorial {
+            get {
+                return ResourceManager.GetString("ActiveTutorial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Месяц | 6 месяцев | 12 месяцев | 🎁 Пробный период | ⬅️ Назад.
+        /// </summary>
+        internal static string KeyboardAccess {
+            get {
+                return ResourceManager.GetString("KeyboardAccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Оплатить {0}⭐ | ⬅️ Назад.
+        /// </summary>
+        internal static string KeyboardPayment {
+            get {
+                return ResourceManager.GetString("KeyboardPayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 📄 Мои подписки | ⬅️ Назад.
+        /// </summary>
+        internal static string KeyboardProfile {
+            get {
+                return ResourceManager.GetString("KeyboardProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Подписка|Профиль|Настройки|О нас|Поддержка  .
         /// </summary>
         internal static string KeyboardStart {
             get {
@@ -70,13 +125,42 @@ namespace TelegramVPNBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 📌 **Имя:** {0}  
-        ///🔗 **Имя пользователя:** @{1}  
-        ///🆔 **ID Telegram:** {2}  
-        ///🕒 **Дата регистрации:** {3}
+        ///   Looks up a localized string similar to Как активировать? | ⬅️ Назад.
+        /// </summary>
+        internal static string KeyboardSubscription {
+            get {
+                return ResourceManager.GetString("KeyboardSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 📄 Мои подписки | ⬅️ Назад.
+        /// </summary>
+        internal static string KeyboardSuccess {
+            get {
+                return ResourceManager.GetString("KeyboardSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вы выбрали подписку на {0} месяцев. Стоимость подписки: {1}⭐.
         ///
-        ///📅 **Статус:** {4}  
-        ///⏳ **Окончание подписки:** {5} (UTC+0).
+        ///🔑 После оплаты вы получите персональный ключ доступа и инструкции по настройке VPN..
+        /// </summary>
+        internal static string PaymentMessage {
+            get {
+                return ResourceManager.GetString("PaymentMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 📌 **Имя:** {0}  
+        ///🔗 Имя пользователя: @{1}  
+        ///🆔 Telegram ID: {2}  
+        ///🕒 Дата регистрации: {3}  
+        ///
+        ///📅 Статус: {4}  
+        ///⏳ Окончание подписки: {5} \(UTC\+0\)  .
         /// </summary>
         internal static string ProfileMessage {
             get {
@@ -97,16 +181,32 @@ namespace TelegramVPNBot.Properties {
         ///   Looks up a localized string similar to Добро пожаловать в PutiNet! 👋
         ///Ваш проводник в безопасный и свободный интернет. Мы предлагаем надёжный и быстрый VPN, который защитит ваши данные и обеспечит анонимность.
         ///
-        ///💡 Почему PutiNet?
+        ///💡 Почему стоит выбрать PutiNet?
         ///
-        ///🌐 Свобода и безопасность: Работайте, общайтесь и отдыхайте в интернете без ограничений.
-        ///🚀 Забудьте о блокировках и наслаждайтесь свободным доступом ко всем вашим любимым сервисам.
-        ///⚡ Высокая скорость и стабильность работы.
-        ///Начните с нами свой путь к свободе интернета!.
+        ///🌐 Свобода и безопасность: Работайте, общайтесь и наслаждайтесь интернетом без ограничений.
+        ///🚀 Забудьте о блокировках и получайте доступ ко всем любимым сервисам.
+        ///⚡ Высокая скорость и стабильная работа.
+        ///
+        ///Начните своё путешествие в мир свободного интернета вместе с нами!.
         /// </summary>
         internal static string StartMessage {
             get {
                 return ResourceManager.GetString("StartMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 🔒 Статус: {0}  
+        ///⏳ Действует до: {1}  
+        ///
+        ///📊 Использовано трафика: {2}  
+        ///
+        ///🔑 Ваш ключ доступа:  
+        ///{3}  .
+        /// </summary>
+        internal static string SubscriptionMessage {
+            get {
+                return ResourceManager.GetString("SubscriptionMessage", resourceCulture);
             }
         }
         
@@ -134,6 +234,21 @@ namespace TelegramVPNBot.Properties {
         internal static string SubscriptionStatusNone {
             get {
                 return ResourceManager.GetString("SubscriptionStatusNone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 🎉 Спасибо за покупку! Ваша подписка на **{0}** успешно активирована.
+        ///
+        ///🔑 Доступ к VPN:
+        ///- Вы можете начать пользоваться VPN прямо сейчас.
+        ///- Ваш доступ будет действителен до **{1}**.
+        ///
+        ///Если у вас возникли вопросы, пожалуйста, свяжитесь с нашей поддержкой..
+        /// </summary>
+        internal static string SuccessMessage {
+            get {
+                return ResourceManager.GetString("SuccessMessage", resourceCulture);
             }
         }
     }
