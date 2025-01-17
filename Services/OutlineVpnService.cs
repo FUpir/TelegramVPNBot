@@ -124,5 +124,27 @@ namespace TelegramVPNBot.Services
                 throw;
             }
         }
+
+        public static async Task<long?> GetUsageByKeyIdAsync(string keyId)
+        {
+            try
+            {
+                var metrics = await GetMetricsAsync();
+
+                return metrics?.bytesTransferredByUserId.ContainsKey(keyId) == true
+                    ? metrics.bytesTransferredByUserId[keyId]
+                    : null;
+            }
+            catch (HttpRequestException ex)
+            {
+                Console.WriteLine($"HTTP Error: {ex.Message}");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Unexpected Error: {ex.Message}");
+                throw;
+            }
+        }
     }
 }

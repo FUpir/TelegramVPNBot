@@ -120,21 +120,37 @@
   <data name="KeyboardStart" xml:space="preserve">
     <value>Оформить Подписку|Профиль|Настройки|О Нас|Подержка</value>
   </data>
+  <data name="ProfileMessage" xml:space="preserve">
+    <value>📌 **Имя:** {0}  
+🔗 **Имя пользователя:** @{1}  
+🆔 **ID Telegram:** {2}  
+🕒 **Дата регистрации:** {3}
+
+📅 **Статус:** {4}  
+⏳ **Окончание подписки:** {5} (UTC+0)</value>
+  </data>
   <data name="StartImg" xml:space="preserve">
     <value>https://lh3.googleusercontent.com/fife/ALs6j_FJDmdxtUSbAuLjXAoSOPDmeA_UVBBCIvIRayVbSJmG3JHp6enlttqnYcQtPTtvYJIOniygzFASeWibYjD-GxkpGny2gTAqpCVo4el25n9hK6Jx8ZtWlbCp7XCYuh-tkGle7B1ERSbDiHa4RPBAmQFFDnBe_yktSWEenGYeoziIkYP3DPOsB0J81BKY25_Tq4AhNZLvqdC924Nd-XHeKRjniKiA2dp1ToaQsV0JdzvLERFh_r_0eVaDvv_BwV0FsDhTOoCD8FwumruyVwcm5Z2RClFB50xww469q0VX2UuEzrUo0q1NN5XEA6j5zIgcJh-0MzLpJkhJlZamSdfqAQDqAGw7HOJ939ZVJ10N_DaWFq9ViXnJdJBuYJRGH_nBJzk0xQtGD3463_DHx_1NcOzUxWXu1uz_RVWfMEfyPQPQn22jAWVox_K1j5FskQZo5-PxIlVMbjtFWvNKnd-mdIuSeAwOBTSFNeNJqf_fYaOLIHoRhULhPB1BI8TkBTOBR4gxnE31n5rifo51bQ4AGx13rFzozIYP5ic3aDYRcB5Ei165pfreqrT-8QrTUBNo3aUyWVcuiwGaM34DdDKMi6dBloewDdgDQ07tAMwrbyEHEBfIrsZot-RAoeki1HeTKsg0iW4IeYTmTjiRlqsgva9F1GDCrMjIaWVtOg_x4XFoEWKN4vEhVak3f2T-5I5YtGeLVPP6ZOyB7hyF0RzZ7rcvJwodKTBI-HkcLY5d6cr3XVLb6g0qqK6uRxCOkbWgOKER7Y-urRaOuDgVPJt1VPmonLo4nlbK1Qi7-T6NB0uImUPyWxQX0OvRZtNJSm6oJnmRaFO5T_AgUEXvEONVgPmETDsUBfEy4VhL9pLIQmQSBC8jAawKrXHxvTeIykNMiMpEcptPnB8L4QAaGo9hA21K_Vz02EJvkbhNk5LNJ_7womZXCjkOlor40NA720gdfoDEBgzxMuj4U_q5Q-KJPhjW4H8IG1eG9As6P_9BsTQJPW54mCCFszoIClGq2mqdNPRce7R6NI8u456W5Gx-erF7-631DA05WjR7rjBwK9NiGmhcVxrskyPlg1O1Y5bMpZg8hoiL4mhGLeIOgnDHqtZI5LUrHGkMn2CcfXej-rBrJ3CuM7oHovtMYo_agXcMw0eNBkfQdz1p07EAKZ9hfb8HoZIJohgsoW377xbRuILckReyzY7BPwALMnZ3HPWT2gw9_20taxUOpj2f79Iv2VxoE86V3kpAaIg2XGQpzZZtgq24DQHTSTcUl9tVi3Rxn_dNUFOz2QpgdigTajtkJylOiu6RZWorUnnvOLMUrBYhYuRPov2LuN3GQaXSq8pG-a7qewF0l1IbJriINAsuCCl41scaSE5Tgcu7akX48WnZeu9m8gRfdRamNWUWuM4l3h7wnhEJoS_6mI7Vo7kmFDGxtmGQYpt2RV0QT5mh7kgOihQiqz3d_Om6Io5-3_RpEsJmxomZJs0a4gIUsp8OJIlrpGQ5Kfjy67qt1D3csc6xy3H74JhOp9y0AAHinT9508bm9_xJVK5q8uhMhMuWp52kQaPtObgHq8BkXwYV5lVLUBNs1dqzTSkN14Dkm67nsM0qUZ32fz9C8EF5ySP-V4Ah_KswOVl0yX56vB3vBspE3ck1DUAn1_nIWmRfT9ZC0qlIbgGcWYs2YWgrNIvriQ9kyHX_Mei6O9ZAjbn_RkT1eXnZxaC8oLcsTOowWBibXD901hRHXqADfGKSlfx2e6h8_CKaY4AHhaE0w1Bqq5xYqoQ0sYVYnL4i1_ki</value>
   </data>
   <data name="StartMessage" xml:space="preserve">
-    <value>👋 Добро пожаловать в VPN Bot, ваш надежный партнер для безопасного и анонимного доступа в интернет.
+    <value>Добро пожаловать в PutiNet! 👋
+Ваш проводник в безопасный и свободный интернет. Мы предлагаем надёжный и быстрый VPN, который защитит ваши данные и обеспечит анонимность.
 
-Возможности:
-1. Защита ваших данных с использованием передовых технологий шифрования.
-2. Высокоскоростное подключение к серверам по всему миру.
-3. Полная конфиденциальность без компромиссов.
+💡 Почему PutiNet?
 
-Что можете можете сделать:
-1. Оформить подписку на VPN.
-2. Получить инструкции по настройке.
-3. Управлять своим аккаунтом и ключами доступа.</value>
+🌐 Свобода и безопасность: Работайте, общайтесь и отдыхайте в интернете без ограничений.
+🚀 Забудьте о блокировках и наслаждайтесь свободным доступом ко всем вашим любимым сервисам.
+⚡ Высокая скорость и стабильность работы.
+Начните с нами свой путь к свободе интернета!</value>
     <comment>Start message text</comment>
+  </data>
+  <data name="SubscriptionStatusActive" xml:space="preserve">
+    <value>✅ Подписка активна</value>
+  </data>
+  <data name="SubscriptionStatusExpired" xml:space="preserve">
+    <value>❌ Подписка просрочена</value>
+  </data>
+  <data name="SubscriptionStatusNone" xml:space="preserve">
+    <value>🚫 Активной подписки нет</value>
   </data>
 </root>

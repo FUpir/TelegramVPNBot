@@ -70,6 +70,21 @@ namespace TelegramVPNBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 📌 **Имя:** {0}  
+        ///🔗 **Имя пользователя:** @{1}  
+        ///🆔 **ID Telegram:** {2}  
+        ///🕒 **Дата регистрации:** {3}
+        ///
+        ///📅 **Статус:** {4}  
+        ///⏳ **Окончание подписки:** {5} (UTC+0).
+        /// </summary>
+        internal static string ProfileMessage {
+            get {
+                return ResourceManager.GetString("ProfileMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to https://lh3.googleusercontent.com/fife/ALs6j_FJDmdxtUSbAuLjXAoSOPDmeA_UVBBCIvIRayVbSJmG3JHp6enlttqnYcQtPTtvYJIOniygzFASeWibYjD-GxkpGny2gTAqpCVo4el25n9hK6Jx8ZtWlbCp7XCYuh-tkGle7B1ERSbDiHa4RPBAmQFFDnBe_yktSWEenGYeoziIkYP3DPOsB0J81BKY25_Tq4AhNZLvqdC924Nd-XHeKRjniKiA2dp1ToaQsV0JdzvLERFh_r_0eVaDvv_BwV0FsDhTOoCD8FwumruyVwcm5Z2RClFB50xww469q0VX2UuEzrUo0q1NN5XEA6j5zIgcJh-0MzLpJkhJlZamSdfqAQDqAGw7HOJ939ZVJ10N_DaWFq9ViXnJdJBuYJRGH_nBJzk0xQtGD3463_DHx_1NcOzUxWXu1uz_RVWfMEfyPQPQn22jAWVox_K1j5FskQZo5-PxIlVMbjtFWvNKnd-md [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StartImg {
@@ -79,21 +94,46 @@ namespace TelegramVPNBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 👋 Добро пожаловать в VPN Bot, ваш надежный партнер для безопасного и анонимного доступа в интернет.
+        ///   Looks up a localized string similar to Добро пожаловать в PutiNet! 👋
+        ///Ваш проводник в безопасный и свободный интернет. Мы предлагаем надёжный и быстрый VPN, который защитит ваши данные и обеспечит анонимность.
         ///
-        ///Возможности:
-        ///1. Защита ваших данных с использованием передовых технологий шифрования.
-        ///2. Высокоскоростное подключение к серверам по всему миру.
-        ///3. Полная конфиденциальность без компромиссов.
+        ///💡 Почему PutiNet?
         ///
-        ///Что можете можете сделать:
-        ///1. Оформить подписку на VPN.
-        ///2. Получить инструкции по настройке.
-        ///3. Управлять своим аккаунтом и ключами доступа..
+        ///🌐 Свобода и безопасность: Работайте, общайтесь и отдыхайте в интернете без ограничений.
+        ///🚀 Забудьте о блокировках и наслаждайтесь свободным доступом ко всем вашим любимым сервисам.
+        ///⚡ Высокая скорость и стабильность работы.
+        ///Начните с нами свой путь к свободе интернета!.
         /// </summary>
         internal static string StartMessage {
             get {
                 return ResourceManager.GetString("StartMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ✅ Подписка активна.
+        /// </summary>
+        internal static string SubscriptionStatusActive {
+            get {
+                return ResourceManager.GetString("SubscriptionStatusActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ❌ Подписка просрочена.
+        /// </summary>
+        internal static string SubscriptionStatusExpired {
+            get {
+                return ResourceManager.GetString("SubscriptionStatusExpired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 🚫 Активной подписки нет.
+        /// </summary>
+        internal static string SubscriptionStatusNone {
+            get {
+                return ResourceManager.GetString("SubscriptionStatusNone", resourceCulture);
             }
         }
     }

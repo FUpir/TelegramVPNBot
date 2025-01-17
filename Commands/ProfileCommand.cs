@@ -21,7 +21,6 @@ namespace TelegramVPNBot.Commands
             var startMessage = LanguageHelper.GetLocalizedMessage(user.Settings.Language, "ProfileMessage");
             var startImg = LanguageHelper.GetLocalizedMessage(user.Settings.Language, "AccessImg");
             var menuKeys = LanguageHelper.GetLocalizedMessage(user.Settings.Language, "KeyboardProfile").Split('|');
-
             var status = SubscriptionStatusHelper.GetSubscriptionStatusMessage(user.SubscriptionEndDateUtc, user.Settings.Language);
 
             var message = string.Format(startMessage, user.FullName, user.Username, user.TelegramId,
@@ -31,7 +30,11 @@ namespace TelegramVPNBot.Commands
             {
                 new[]
                 {
-                    new InlineKeyboardButton(menuKeys[0]) { CallbackData = "start" }
+                    new InlineKeyboardButton(menuKeys[0]) { CallbackData = "subscription" }
+                },
+                new[]
+                {
+                    new InlineKeyboardButton(menuKeys[1]) { CallbackData = "start" }
                 }
             });
 

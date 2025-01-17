@@ -70,12 +70,8 @@ namespace TelegramVPNBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 🔑 **Доступ к VPN**
-        ///
-        ///Ваш доступ к VPN включает:
-        ///- 🌍 Серверы по всему миру для анонимного и безопасного соединения.
-        ///- 🚀 Высокая скорость соединения без ограничений.
-        ///- 🛡️ Защита ваших данных и конфиденциальности..
+        ///   Looks up a localized string similar to Choose Your Subscription 💳
+        ///We offer various options to ensure you get VPN access tailored to your needs..
         /// </summary>
         internal static string AccessMessage {
             get {
@@ -84,7 +80,16 @@ namespace TelegramVPNBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1|6|12|Назад.
+        ///   Looks up a localized string similar to https://telegra.ph/Tutorial-How-to-Set-Up-and-Use-Outline-VPN-with-an-Access-Key-01-17.
+        /// </summary>
+        internal static string ActiveTutorial {
+            get {
+                return ResourceManager.GetString("ActiveTutorial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Monthly|6 Months|12 Months|🎁 Trial Period|🔙 Back.
         /// </summary>
         internal static string KeyboardAccess {
             get {
@@ -93,7 +98,7 @@ namespace TelegramVPNBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Назад.
+        ///   Looks up a localized string similar to 📄 My Subscriptions|Назад.
         /// </summary>
         internal static string KeyboardProfile {
             get {
@@ -111,6 +116,15 @@ namespace TelegramVPNBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to How to Active?|🔙 Back.
+        /// </summary>
+        internal static string KeyboardSubscription {
+            get {
+                return ResourceManager.GetString("KeyboardSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Вы выбрали подписку на **{0} месяцев**. Стоимость подписки: **${1}**.
         ///
         ///🔑 После оплаты вы получите персональный ключ доступа и инструкции по настройке VPN..
@@ -122,13 +136,13 @@ namespace TelegramVPNBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 📌 **Имя:** {0}  
-        ///🔗 **Имя пользователя:** @{1}  
-        ///🆔 **ID Telegram:** {2}  
-        ///🕒 **Дата регистрации:** {3}
+        ///   Looks up a localized string similar to 📌 **Name:** {0}
+        ///🔗 Username: @{1}
+        ///🆔 Telegram ID: {2}
+        ///🕒 Registration Date: {3}
         ///
-        ///📅 **Статус подписки:** {4}  
-        ///⏳ **Окончание подписки:** {5}.
+        ///📅 Status: {4}
+        ///⏳ Subscription Expiration: {5} \(UTC\+0\).
         /// </summary>
         internal static string ProfileMessage {
             get {
@@ -146,17 +160,15 @@ namespace TelegramVPNBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 👋 Welcome to VPN Bot, your trusted partner for secure and anonymous internet access.
+        ///   Looks up a localized string similar to Welcome to PutiNet! 👋
+        ///Your guide to a safe and unrestricted internet. We offer reliable and fast VPN services to protect your data and ensure anonymity.
         ///
-        ///Features:
-        ///1. Protect your data with advanced encryption technologies.
-        ///2. High-speed connection to servers around the world.
-        ///3. Complete privacy without compromises.
+        ///💡 Why choose PutiNet?
         ///
-        ///What you can do:
-        ///1. Subscribe to the VPN service.
-        ///2. Get setup instructions.
-        ///3. Manage your account and access keys..
+        ///🌐 Freedom and security: Work, communicate, and enjoy the internet without limits.
+        ///🚀 Forget about restrictions and enjoy unrestricted access to all your favorite services.
+        ///⚡ High speed and stable performance.
+        ///Start your journey to internet freedom with us!.
         /// </summary>
         internal static string StartMessage {
             get {
@@ -165,7 +177,22 @@ namespace TelegramVPNBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to подписка активна.
+        ///   Looks up a localized string similar to 🔒 Статус: {0}
+        ///⏳ Действует до: {1}
+        ///
+        ///📊 Использовано трафика: {2}
+        ///
+        ///🔑 Ваш ключ доступа:  
+        ///{3}.
+        /// </summary>
+        internal static string SubscriptionMessage {
+            get {
+                return ResourceManager.GetString("SubscriptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ✅ Subscription is active.
         /// </summary>
         internal static string SubscriptionStatusActive {
             get {
@@ -174,7 +201,7 @@ namespace TelegramVPNBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to подписка просрочена.
+        ///   Looks up a localized string similar to ❌ Subscription has expired.
         /// </summary>
         internal static string SubscriptionStatusExpired {
             get {
@@ -183,7 +210,7 @@ namespace TelegramVPNBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to нет активной подписки.
+        ///   Looks up a localized string similar to 🚫 No active subscription.
         /// </summary>
         internal static string SubscriptionStatusNone {
             get {

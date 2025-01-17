@@ -24,6 +24,10 @@ namespace TelegramVPNBot.Commands
             {
                 new[]
                 {
+                    new InlineKeyboardButton(menuKeys[3]) { CallbackData = "free" }
+                },
+                new[]
+                {
                     new InlineKeyboardButton(menuKeys[0]) { CallbackData = "month1" }
                 },
                 new[]
@@ -36,7 +40,7 @@ namespace TelegramVPNBot.Commands
                 },
                 new[]
                 {
-                    new InlineKeyboardButton(menuKeys[3]) { CallbackData = "start" }
+                    new InlineKeyboardButton(menuKeys[4]) { CallbackData = "start" }
                 }
             });
 

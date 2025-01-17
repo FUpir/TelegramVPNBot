@@ -40,7 +40,7 @@ namespace TelegramVPNBot.Commands
             {
                 new[]
                 {
-                    new InlineKeyboardButton(menuKeys[0]) { CallbackData = "active" }
+                    new InlineKeyboardButton(menuKeys[0]) { CallbackData = "subscription" }
                 },
                 new[]
                 {

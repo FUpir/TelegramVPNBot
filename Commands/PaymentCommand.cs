@@ -13,6 +13,7 @@ namespace TelegramVPNBot.Commands
     {
         private const int MonthPrice = 5;
         private int _totalPrice = 0;
+        private int _monthsCount;
         public async Task ExecuteAsync(Update update, ITelegramBotClient botClient)
         {
             if (update.CallbackQuery?.Data == null)
@@ -25,7 +26,8 @@ namespace TelegramVPNBot.Commands
 
             if (match.Success)
             {
-                _totalPrice = int.Parse(match.Value) * MonthPrice;
+                _monthsCount = int.Parse(match.Value);
+                _totalPrice = _monthsCount * MonthPrice;
             }
             else
                 return;
@@ -37,7 +39,7 @@ namespace TelegramVPNBot.Commands
 
             var status = SubscriptionStatusHelper.GetSubscriptionStatusMessage(user.SubscriptionEndDateUtc, user.Settings.Language);
 
-            var message = string.Format(startMessage, _totalPrice / MonthPrice, _totalPrice);
+            var message = string.Format(startMessage, _monthsCount, _totalPrice);
 
             List<LabeledPrice> labels = [new LabeledPrice("PRICE", _totalPrice)];
 
@@ -45,7 +47,7 @@ namespace TelegramVPNBot.Commands
             (
                 "Subscription",
                 "PutiNet VPN",
-                $"{_totalPrice/MonthPrice}",
+                $"{_monthsCount}",
                 "XTR",
                 labels);
 

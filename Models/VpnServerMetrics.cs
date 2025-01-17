@@ -8,6 +8,6 @@ namespace TelegramVPNBot.Models
 {
     public class VpnServerMetrics
     {
-        public Dictionary<string, long> BytesTransferredByUserId { get; set; }
+        public Dictionary<string, long> bytesTransferredByUserId { get; set; }
     }
 }

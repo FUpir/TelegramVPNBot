@@ -20,6 +20,7 @@ namespace TelegramVPNBot.Handlers
             { "profile", new ProfileCommand(authorizationService) },
             { "month", new PaymentCommand(authorizationService) },
             { "SuccessPayment", new SuccessPaymentCommand(authorizationService) },
+            { "subscription", new SubscriptionCommand(authorizationService) },
         };
 
         public async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
