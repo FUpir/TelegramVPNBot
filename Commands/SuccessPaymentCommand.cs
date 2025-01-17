@@ -22,7 +22,7 @@ namespace TelegramVPNBot.Commands
 
             var messageTxt = LanguageHelper.GetLocalizedMessage(user.Settings.Language, "SuccessMessage");
             var startImg = LanguageHelper.GetLocalizedMessage(user.Settings.Language, "AccessImg");
-            var menuKeys = LanguageHelper.GetLocalizedMessage(user.Settings.Language, "KeyboardAccess").Split('|');
+            var menuKeys = LanguageHelper.GetLocalizedMessage(user.Settings.Language, "KeyboardSuccess").Split('|');
 
             var message = string.Format(messageTxt, subMonths, user.SubscriptionEndDateUtc);
 
@@ -51,7 +51,7 @@ namespace TelegramVPNBot.Commands
                 }
             });
 
-            await botClient.SendPhoto(user.TelegramId, InputFile.FromUri(startImg), caption: messageTxt,
+            await botClient.SendPhoto(user.TelegramId, InputFile.FromUri(startImg), caption: message,
                 replyMarkup: inlineKeyboard,parseMode:ParseMode.MarkdownV2);
         }
     }

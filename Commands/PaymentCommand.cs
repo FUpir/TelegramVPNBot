@@ -11,7 +11,7 @@ namespace TelegramVPNBot.Commands
 {
     public class PaymentCommand(IAuthorizationService authorizationService) : ICommand
     {
-        private const int MonthPrice = 5;
+        private const int MonthPrice = 50;
         private int _totalPrice;
         private int _monthsCount;
         public async Task ExecuteAsync(Update update, ITelegramBotClient botClient)

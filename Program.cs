@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Telegram.Bot;
 using TelegramVPNBot.DataBase;
 using TelegramVPNBot.Handlers;
@@ -61,7 +62,7 @@ namespace TelegramVPNBot
 
             await cleanupTask;
 
-            Console.WriteLine("Application stopped.");
+            Console.WriteLine("Application stopped."); 
         }
     }
 }
