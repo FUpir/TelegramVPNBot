@@ -1,4 +1,5 @@
 ﻿using Telegram.Bot;
+using Telegram.Bot.Exceptions;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.ReplyMarkups;
@@ -43,8 +44,31 @@ namespace TelegramVPNBot.Commands
                 }
             });
 
-            await botClient.SendPhoto(user.TelegramId, InputFile.FromUri(startImg), caption: message,
-                replyMarkup: inlineKeyboard,parseMode:ParseMode.Markdown);
+            try
+            {
+                var media = new InputMediaPhoto(new InputFileUrl(startImg))
+                {
+                    Caption = message,
+                    ParseMode = ParseMode.Markdown
+                };
+
+                await botClient.EditMessageMedia(
+                    chatId: userData.Id,
+                    messageId: update.CallbackQuery.Message.MessageId,
+                    media: media,
+                    replyMarkup: inlineKeyboard
+                );
+            }
+            catch (ApiRequestException ex)
+            {
+                await botClient.SendPhoto(
+                    chatId: user.TelegramId,
+                    photo: InputFile.FromUri(startImg),
+                    caption: message,
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.Markdown
+                );
+            }
         }
     }
 }

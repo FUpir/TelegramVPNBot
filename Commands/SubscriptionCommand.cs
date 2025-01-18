@@ -5,6 +5,7 @@ using Telegram.Bot;
 using TelegramVPNBot.Helpers;
 using TelegramVPNBot.Interfaces;
 using TelegramVPNBot.Services;
+using Telegram.Bot.Exceptions;
 
 namespace TelegramVPNBot.Commands
 {
@@ -29,13 +30,14 @@ namespace TelegramVPNBot.Commands
             var accessUrl = keyInfo.accessUrl;
 
             var usageKey = await OutlineVpnService.GetUsageByKeyIdAsync(keyInfo.id);
+            var accessUrlSpoiler = $"||`{accessUrl}`||";
 
             var message = string.Format(
                 startMessage,
                 status,
                 user.SubscriptionEndDateUtc,
-                string.Format("{0:F2}", usageKey / (double)(1024 * 1024 * 1024))+" GB",
-                "`"+accessUrl+"`"
+                string.Format("{0:F2}", usageKey / (double)(1024 * 1024 * 1024)) + " GB",
+                accessUrlSpoiler
             );
 
             var inlineKeyboard = new InlineKeyboardMarkup(new[]
@@ -50,8 +52,31 @@ namespace TelegramVPNBot.Commands
                 }
             });
 
-            await botClient.SendPhoto(user.TelegramId, InputFile.FromUri(startImg), caption: message,
-                replyMarkup: inlineKeyboard, parseMode: ParseMode.Markdown);
+            try
+            {
+                var media = new InputMediaPhoto(new InputFileUrl(startImg))
+                {
+                    Caption = message,
+                    ParseMode = ParseMode.Markdown
+                };
+
+                await botClient.EditMessageMedia(
+                    chatId: userData.Id,
+                    messageId: update.CallbackQuery.Message.MessageId,
+                    media: media,
+                    replyMarkup: inlineKeyboard
+                );
+            }
+            catch (ApiRequestException ex)
+            {
+                await botClient.SendPhoto(
+                    chatId: user.TelegramId,
+                    photo: InputFile.FromUri(startImg),
+                    caption: message,
+                    replyMarkup: inlineKeyboard,
+                    parseMode: ParseMode.MarkdownV2
+                );
+            }
         }
     }
 }

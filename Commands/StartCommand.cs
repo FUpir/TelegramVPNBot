@@ -4,6 +4,7 @@ using Telegram.Bot.Types.Enums;
 using TelegramVPNBot.Helpers;
 using TelegramVPNBot.Interfaces;
 using Telegram.Bot.Types.ReplyMarkups;
+using Telegram.Bot.Exceptions;
 
 namespace TelegramVPNBot.Commands
 {
@@ -43,8 +44,42 @@ namespace TelegramVPNBot.Commands
                 }
             });
 
-            await botClient.SendPhoto(userChat.Id, InputFile.FromUri(startImg), caption: startMessage,
-                replyMarkup: inlineKeyboard, parseMode:ParseMode.Markdown);
+            try
+            {
+                if (update.CallbackQuery?.Message != null)
+                {
+                    var media = new InputMediaPhoto(new InputFileUrl(startImg))
+                    {
+                        Caption = startMessage,
+                        ParseMode = ParseMode.Html
+                    };
+
+                    await botClient.EditMessageMedia(
+                        chatId: update.CallbackQuery.Message.Chat.Id,
+                        messageId: update.CallbackQuery.Message.MessageId,
+                        media: media,
+                        replyMarkup: inlineKeyboard
+                    );
+                }
+                else
+                {
+                    await botClient.SendPhoto(
+                        chatId: user.TelegramId,
+                        photo: InputFile.FromUri(startImg),
+                        caption: startMessage,
+                        replyMarkup: inlineKeyboard,
+                        parseMode: Telegram.Bot.Types.Enums.ParseMode.Html
+                    );
+                }
+            }
+            catch (ApiRequestException ex)
+            {
+                Console.WriteLine($"Telegram API Error: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Unexpected Error: {ex.Message}");
+            }
         }
     }
 }

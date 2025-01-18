@@ -6,6 +6,7 @@ using TelegramVPNBot.Helpers;
 using TelegramVPNBot.Interfaces;
 using System.Text.RegularExpressions;
 using Telegram.Bot.Types.Payments;
+using Telegram.Bot.Exceptions;
 
 namespace TelegramVPNBot.Commands
 {
@@ -38,8 +39,6 @@ namespace TelegramVPNBot.Commands
             var startImg = LanguageHelper.GetLocalizedMessage(user.Settings.Language, "AccessImg");
             var menuKeys = LanguageHelper.GetLocalizedMessage(user.Settings.Language, "KeyboardPayment").Split('|');
 
-            var status = SubscriptionStatusHelper.GetSubscriptionStatusMessage(user.SubscriptionEndDateUtc, user.Settings.Language);
-
             var message = string.Format(startMessage, _monthsCount, _totalPrice);
 
             List<LabeledPrice> labels = [new LabeledPrice("PRICE", _totalPrice)];
@@ -70,8 +69,31 @@ namespace TelegramVPNBot.Commands
                 }
             });
 
-            await botClient.SendPhoto(user.TelegramId, InputFile.FromUri(startImg), caption: message,
-                replyMarkup: inlineKeyboard, parseMode: ParseMode.Markdown);
+            try
+            {
+                var media = new InputMediaPhoto(new InputFileUrl(startImg))
+                {
+                    Caption = message,
+                    ParseMode = ParseMode.Html
+                };
+
+                await botClient.EditMessageMedia(
+                    chatId: userData.Id,
+                    messageId: update.CallbackQuery.Message.MessageId,
+                    media: media,
+                    replyMarkup: inlineKeyboard
+                );
+            }
+            catch (ApiRequestException ex)
+            {
+                await botClient.SendPhoto(
+                    chatId: user.TelegramId,
+                    photo: InputFile.FromUri(startImg),
+                    caption: message,
+                    replyMarkup: inlineKeyboard,
+                    parseMode: Telegram.Bot.Types.Enums.ParseMode.Html
+                );
+            }
         }
     }
 }
