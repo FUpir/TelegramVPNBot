@@ -80,7 +80,7 @@ namespace TelegramVPNBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://telegra.ph/Tutorial-How-to-Set-Up-and-Use-Outline-VPN-with-an-Access-Key-01-17.
+        ///   Looks up a localized string similar to https://telegra.ph/Rukovodstvo-Kak-nastroit-i-ispolzovat-Outline-VPN-s-klyuchom-dostupa-01-17.
         /// </summary>
         internal static string ActiveTutorial {
             get {
@@ -160,7 +160,7 @@ namespace TelegramVPNBot.Properties {
         ///🕒 Дата регистрации: {3}  
         ///
         ///📅 Статус: {4}  
-        ///⏳ Окончание подписки: {5} \(UTC\+0\)  .
+        ///⏳ Окончание подписки: {5} (UTC+0).
         /// </summary>
         internal static string ProfileMessage {
             get {

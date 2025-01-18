@@ -160,7 +160,7 @@ namespace TelegramVPNBot.Properties {
         ///🕒 Registration Date: {3}
         ///
         ///📅 Status: {4}
-        ///⏳ Subscription Expiration: {5} \(UTC\+0\).
+        ///⏳ Subscription Expiration: {5}  (UTC+0).
         /// </summary>
         internal static string ProfileMessage {
             get {

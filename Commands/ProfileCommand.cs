@@ -23,8 +23,13 @@ namespace TelegramVPNBot.Commands
             var menuKeys = LanguageHelper.GetLocalizedMessage(user.Settings.Language, "KeyboardProfile").Split('|');
             var status = SubscriptionStatusHelper.GetSubscriptionStatusMessage(user.SubscriptionEndDateUtc, user.Settings.Language);
 
-            var message = string.Format(startMessage, user.FullName, user.Username, user.TelegramId,
-                user.CreatedAtUtc.ToShortDateString(), status, user.SubscriptionEndDateUtc);
+            var message = string.Format(startMessage,
+                user.FullName,
+                user.Username,
+                user.TelegramId,
+                user.CreatedAtUtc.ToString("dd.MM.yyyy"), status,
+                user.SubscriptionEndDateUtc?.ToString("dd.MM.yyyy HH:mm") ?? 
+                user.CreatedAtUtc.ToString("dd.MM.yyyy HH:mm"));
 
             var inlineKeyboard = new InlineKeyboardMarkup(new[]
             {
@@ -39,7 +44,7 @@ namespace TelegramVPNBot.Commands
             });
 
             await botClient.SendPhoto(user.TelegramId, InputFile.FromUri(startImg), caption: message,
-                replyMarkup: inlineKeyboard,parseMode:ParseMode.MarkdownV2);
+                replyMarkup: inlineKeyboard,parseMode:ParseMode.Markdown);
         }
     }
 }

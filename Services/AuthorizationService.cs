@@ -19,7 +19,7 @@ namespace TelegramVPNBot.Services
                     TelegramId = userChat.Id,
                     Username = userChat.Username,
                     CreatedAtUtc = DateTime.UtcNow,
-                    FullName = userChat.FirstName + (" " + userChat.LastName),
+                    FullName = userChat.FirstName + (userChat.LastName != null ? " " + userChat.LastName : ""),
                     Settings = new Settings
                     {
                         Language = LanguageHelper.GetLanguage(userChat.LanguageCode)
