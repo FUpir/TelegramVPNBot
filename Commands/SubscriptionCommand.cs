@@ -30,7 +30,7 @@ namespace TelegramVPNBot.Commands
             var accessUrl = keyInfo.accessUrl;
 
             var usageKey = await OutlineVpnService.GetUsageByKeyIdAsync(keyInfo.id);
-            var accessUrlSpoiler = $"||`{accessUrl}`||";
+            var accessUrlSpoiler = $"`{accessUrl}`";
 
             var message = string.Format(
                 startMessage,
