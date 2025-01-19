@@ -214,4 +214,16 @@ Thank you for choosing us! 💙</value>
   <data name="KeyboardExpired" xml:space="preserve">
     <value>Subscribe|Profile</value>
   </data>
+  <data name="FreeMessage" xml:space="preserve">
+    <value>🎉 Congratulations! Your 24-hour trial VPN subscription has been successfully activated. 
+
+📲 You can connect right away and start enjoying secure and fast internet access. 
+
+⏰ Once the trial period ends, you can extend your subscription to continue using the service. 
+
+Thank you for choosing our service! 💙</value>
+  </data>
+  <data name="KeyboardFree" xml:space="preserve">
+    <value>📄 My Subscriptions|⬅️ Back</value>
+  </data>
 </root>

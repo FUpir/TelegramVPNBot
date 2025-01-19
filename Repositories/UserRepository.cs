@@ -58,5 +58,11 @@ namespace TelegramVPNBot.Repositories
             return await _users.Find(user =>
                 user.SubscriptionEndDateUtc != null && user.SubscriptionEndDateUtc < currentDateUtc&& user.OutlineKey!=null).ToListAsync();
         }
+
+        public async Task UpdateIsFreeAvailableAsync(ObjectId id, bool isFreeAvailable)
+        {
+            var update = Builders<User>.Update.Set(user => user.IsFreeAvailable, isFreeAvailable);
+            await _users.UpdateOneAsync(user => user.Id == id, update);
+        }
     }
 }

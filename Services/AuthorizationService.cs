@@ -41,5 +41,10 @@ namespace TelegramVPNBot.Services
         {
             await userRepository.UpdateOutlineKeyAsync(id, newOutlineKey);
         }
+
+        public async Task UpdateIsFreeAvailableAsync(ObjectId id, bool isFreeAvailable)
+        {
+            await userRepository.UpdateIsFreeAvailableAsync(id, isFreeAvailable);
+        }
     }
 }

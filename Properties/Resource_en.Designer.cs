@@ -105,6 +105,21 @@ namespace TelegramVPNBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 🎉 Congratulations! Your 24-hour trial VPN subscription has been successfully activated. 
+        ///
+        ///📲 You can connect right away and start enjoying secure and fast internet access. 
+        ///
+        ///⏰ Once the trial period ends, you can extend your subscription to continue using the service. 
+        ///
+        ///Thank you for choosing our service! 💙.
+        /// </summary>
+        internal static string FreeMessage {
+            get {
+                return ResourceManager.GetString("FreeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Monthly|6 Months|12 Months|🎁 Trial Period|⬅️ Back.
         /// </summary>
         internal static string KeyboardAccess {
@@ -119,6 +134,15 @@ namespace TelegramVPNBot.Properties {
         internal static string KeyboardExpired {
             get {
                 return ResourceManager.GetString("KeyboardExpired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 📄 My Subscriptions|⬅️ Back.
+        /// </summary>
+        internal static string KeyboardFree {
+            get {
+                return ResourceManager.GetString("KeyboardFree", resourceCulture);
             }
         }
         

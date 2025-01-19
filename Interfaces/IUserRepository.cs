@@ -18,5 +18,6 @@ namespace TelegramVPNBot.Interfaces
         Task UpdateSubscriptionEndDateAsync(ObjectId id, DateTime? newEndDate);
         Task UpdateOutlineKeyAsync(ObjectId id, string? newOutlineKey);
         Task<List<User>> GetExpiredUsersAsync(DateTime currentDateUtc);
+        Task UpdateIsFreeAvailableAsync(ObjectId id, bool isFreeAvailable);
     }
 }

@@ -105,6 +105,21 @@ namespace TelegramVPNBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 🎉 Поздравляем! Ваша пробная подписка на VPN успешно активирована на 24 часа. 
+        ///
+        ///📲 Вы можете сразу подключиться и начать пользоваться безопасным и быстрым интернетом. 
+        ///
+        ///⏰ По истечении пробного периода вы сможете продлить подписку, чтобы продолжить пользоваться сервисом. 
+        ///
+        ///Спасибо, что выбрали наш сервис! 💙.
+        /// </summary>
+        internal static string FreeMessage {
+            get {
+                return ResourceManager.GetString("FreeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Месяц | 6 месяцев | 12 месяцев | 🎁 Пробный период | ⬅️ Назад.
         /// </summary>
         internal static string KeyboardAccess {
@@ -119,6 +134,15 @@ namespace TelegramVPNBot.Properties {
         internal static string KeyboardExpired {
             get {
                 return ResourceManager.GetString("KeyboardExpired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 📄 Мои подписки|⬅️ Назад.
+        /// </summary>
+        internal static string KeyboardFree {
+            get {
+                return ResourceManager.GetString("KeyboardFree", resourceCulture);
             }
         }
         

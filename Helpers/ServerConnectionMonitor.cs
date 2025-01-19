@@ -2,6 +2,7 @@
 using Renci.SshNet;
 using System.Text;
 using Telegram.Bot;
+using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.ReplyMarkups;
 using TelegramVPNBot.Services;
@@ -15,6 +16,7 @@ namespace TelegramVPNBot.Helpers
         private readonly string _serverPassword;
         private readonly long _adminChatId;
         private readonly ITelegramBotClient _botClient;
+        private Message? _lastMessage = null;
 
         public ServerConnectionMonitor(ITelegramBotClient botClient)
         {
@@ -46,7 +48,7 @@ namespace TelegramVPNBot.Helpers
                     Console.WriteLine($"Error during monitoring: {ex.Message}");
                 }
 
-                await Task.Delay(TimeSpan.FromMinutes(5), cancellationToken);
+                await Task.Delay(TimeSpan.FromSeconds(5), cancellationToken);
             }
 
             Console.WriteLine("ServerConnectionMonitor stopped.");
@@ -65,7 +67,7 @@ namespace TelegramVPNBot.Helpers
 
             var messageBuilder = new StringBuilder();
             messageBuilder.AppendLine($"📊 *Connection Report*");
-            messageBuilder.AppendLine($"Generated: {DateTime.Now:g}");
+            messageBuilder.AppendLine($"Generated: {DateTime.Now}");
             messageBuilder.AppendLine();
 
             using (var client = new SshClient(_serverIp, _serverUser, _serverPassword))
@@ -118,13 +120,25 @@ namespace TelegramVPNBot.Helpers
 
             try
             {
-                var finalMessage = messageBuilder.ToString();
-                await _botClient.SendMessage(
-                    chatId: _adminChatId,
-                    text: finalMessage,
-                    replyMarkup: inlineKeyboard,
-                    parseMode: ParseMode.Markdown
-                );
+                if (_lastMessage?.MessageId != null)
+                {
+                    _lastMessage = await _botClient.EditMessageText(
+                        chatId: _adminChatId,
+                        messageId: _lastMessage.MessageId,
+                        text: messageBuilder.ToString(),
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Markdown
+                    );
+                }
+                else
+                {
+                    _lastMessage = await _botClient.SendMessage(
+                        chatId: _adminChatId,
+                        text: messageBuilder.ToString(),
+                        replyMarkup: inlineKeyboard,
+                        parseMode: ParseMode.Markdown
+                    );
+                }
 
                 Console.WriteLine("Connection report successfully sent to Telegram.");
             }

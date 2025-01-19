@@ -23,6 +23,9 @@ namespace TelegramVPNBot.Models
         [BsonElement("outLineKey")]
         public string? OutlineKey { get; set; }
 
+        [BsonElement("isFreeAvailable")]
+        public bool IsFreeAvailable { get; set; } = true;
+
         [BsonElement("purchasesHistory")]
         public List<Purchase>? PurchasesHistory { get; set; }
 

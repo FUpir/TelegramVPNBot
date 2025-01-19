@@ -34,7 +34,6 @@ namespace TelegramVPNBot.Commands
             else
                 return;
 
-
             var startMessage = LanguageHelper.GetLocalizedMessage(user.Settings.Language, "PaymentMessage");
             var startImg = LanguageHelper.GetLocalizedMessage(user.Settings.Language, "AccessImg");
             var menuKeys = LanguageHelper.GetLocalizedMessage(user.Settings.Language, "KeyboardPayment").Split('|');
