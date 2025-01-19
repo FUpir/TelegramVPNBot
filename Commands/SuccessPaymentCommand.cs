@@ -35,7 +35,7 @@ namespace TelegramVPNBot.Commands
 
             if (user.OutlineKey == null)
             {
-                var key = await OutlineVpnService.CreateKeyAsync(user.Id.ToString());
+                var key = await OutlineVpnService.CreateKeyWithIncrementedPortAsync(user.Id.ToString());
                 await authorizationService.UpdateOutlineKeyAsync(user.Id, key.id);
             }
 
@@ -52,7 +52,7 @@ namespace TelegramVPNBot.Commands
             });
 
             await botClient.SendPhoto(user.TelegramId, InputFile.FromUri(startImg), caption: message,
-                replyMarkup: inlineKeyboard,parseMode:ParseMode.MarkdownV2);
+                replyMarkup: inlineKeyboard,parseMode:ParseMode.Markdown);
         }
     }
 }

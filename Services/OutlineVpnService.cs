@@ -48,19 +48,46 @@ namespace TelegramVPNBot.Services
             }
         }
 
-        public static async Task<VpnKey?> CreateKeyAsync(string name)
+        public static async Task<VpnKey?> CreateKeyWithIncrementedPortAsync(string name)
         {
-            var content = new StringContent(
-                JsonSerializer.Serialize(new { name }),
-                Encoding.UTF8,
-                "application/json");
-            var response = await _httpClient.PostAsync($"{_apiUrl}/access-keys", content);
-            response.EnsureSuccessStatusCode();
-            var json = await response.Content.ReadAsStringAsync();
-            var newKey = JsonSerializer.Deserialize<VpnKey>(json);
-            return newKey;
+            var keys = await GetKeysAsync();
+
+            if (keys is null || keys.Count == 0)
+            {   
+                const int defaultPort = 50000;
+                return await CreateKeyAsync(name, defaultPort);
+            }
+
+            var lastKey = keys.LastOrDefault();
+            if (lastKey is null)
+            {
+                return await CreateKeyAsync(name, 50000);
+            }
+
+            var newPort = lastKey.port + 1;
+            Console.WriteLine($"lastkey: {lastKey.id} (port {lastKey.port}). new port: {newPort}");
+
+            return await CreateKeyAsync(name, newPort);
         }
 
+
+        public static async Task<VpnKey?> CreateKeyAsync(string name, int port)
+        {
+            var requestBody = new { name, port };
+            var content = new StringContent(
+                JsonSerializer.Serialize(requestBody),
+                Encoding.UTF8,
+                "application/json"
+            );
+
+            var response = await _httpClient.PostAsync($"{_apiUrl}/access-keys", content);
+            response.EnsureSuccessStatusCode();
+
+            var json = await response.Content.ReadAsStringAsync();
+            var newKey = JsonSerializer.Deserialize<VpnKey>(json);
+
+            return newKey;
+        }
 
         public static async Task DeleteKeyAsync(string keyId)
         {

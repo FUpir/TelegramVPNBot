@@ -32,11 +32,13 @@ namespace TelegramVPNBot
                     return new TelegramBotClient(botToken);
                 })
                 .AddSingleton<SubscriptionCleanupHelper>()
+                .AddSingleton<ServerConnectionMonitor>()
                 .BuildServiceProvider();
 
             var botClient = serviceProvider.GetRequiredService<ITelegramBotClient>();
             var updateHandler = serviceProvider.GetRequiredService<UpdateHandler>();
             var cleanupService = serviceProvider.GetRequiredService<SubscriptionCleanupHelper>();
+            var severMonitor = serviceProvider.GetRequiredService<ServerConnectionMonitor>();
 
             var cts = new CancellationTokenSource();
 
@@ -56,6 +58,7 @@ namespace TelegramVPNBot
             Console.WriteLine("Bot is running...");
 
             var cleanupTask = cleanupService.StartAsync(cts.Token);
+            var monitorTask = severMonitor.StartAsync(cts.Token);
 
             var waitForShutdown = new TaskCompletionSource();
             AppDomain.CurrentDomain.ProcessExit += (_, _) => waitForShutdown.TrySetResult();
@@ -65,6 +68,7 @@ namespace TelegramVPNBot
 
             cts.Cancel();
             await cleanupTask;
+            await monitorTask;
 
             Console.WriteLine("Application stopped.");
         }
