@@ -89,11 +89,36 @@ namespace TelegramVPNBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your Access Has Ended ⏳
+        ///
+        ///Hello!
+        ///We noticed that your subscription has expired. To regain access, please renew your subscription—it only takes a few minutes!  
+        ///
+        ///If you have any questions or need assistance, feel free to contact us. We are always here to help.  
+        ///
+        ///Thank you for choosing us! 💙.
+        /// </summary>
+        internal static string ExpiredMessage {
+            get {
+                return ResourceManager.GetString("ExpiredMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Monthly|6 Months|12 Months|🎁 Trial Period|⬅️ Back.
         /// </summary>
         internal static string KeyboardAccess {
             get {
                 return ResourceManager.GetString("KeyboardAccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subscribe|Profile.
+        /// </summary>
+        internal static string KeyboardExpired {
+            get {
+                return ResourceManager.GetString("KeyboardExpired", resourceCulture);
             }
         }
         

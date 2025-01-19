@@ -201,4 +201,17 @@ If you have any questions, please contact our support team.</value>
   <data name="ActiveTutorial" xml:space="preserve">
     <value>https://telegra.ph/Tutorial-How-to-Set-Up-and-Use-Outline-VPN-with-an-Access-Key-01-17</value>
   </data>
+  <data name="ExpiredMessage" xml:space="preserve">
+    <value>Your Access Has Ended ⏳
+
+Hello!
+We noticed that your subscription has expired. To regain access, please renew your subscription—it only takes a few minutes!  
+
+If you have any questions or need assistance, feel free to contact us. We are always here to help.  
+
+Thank you for choosing us! 💙</value>
+  </data>
+  <data name="KeyboardExpired" xml:space="preserve">
+    <value>Subscribe|Profile</value>
+  </data>
 </root>

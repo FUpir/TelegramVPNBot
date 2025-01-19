@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Telegram.Bot;
-using Telegram.Bot.Types.Enums;
-using TelegramVPNBot.DataBase;
+﻿using Telegram.Bot;
+using Telegram.Bot.Types.ReplyMarkups;
 using TelegramVPNBot.Interfaces;
-using TelegramVPNBot.Repositories;
 using TelegramVPNBot.Services;
 
 namespace TelegramVPNBot.Helpers
@@ -46,7 +39,28 @@ namespace TelegramVPNBot.Helpers
                     await OutlineVpnService.DeleteKeyAsync(user.OutlineKey);
                     await userRepository.UpdateOutlineKeyAsync(user.Id, null);
 
-                    await botClient.SendMessage(user.TelegramId, "Your subscription has expired");
+                    var startMessage = LanguageHelper.GetLocalizedMessage(user.Settings.Language, "ExpiredMessage");
+                    var menuKeys = LanguageHelper.GetLocalizedMessage(user.Settings.Language, "KeyboardExpired").Split('|');
+
+                    var inlineKeyboard = new InlineKeyboardMarkup(new[]
+                    {
+                        new[]
+                        {
+                            new InlineKeyboardButton($"{menuKeys[0]}")
+                            {
+                                CallbackData = "access"
+                            }
+                        },
+                        new[]
+                        {
+                            new InlineKeyboardButton($"{menuKeys[1]}")
+                            {
+                                CallbackData = "profile"
+                            }
+                        }
+                    });
+
+                    await botClient.SendMessage(user.TelegramId, startMessage, replyMarkup: inlineKeyboard);
                 }
             }
         }

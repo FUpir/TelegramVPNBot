@@ -89,11 +89,36 @@ namespace TelegramVPNBot.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ваш доступ завершён ⏳
+        ///
+        ///Здравствуйте!
+        ///Мы заметили, что срок действия вашей подписки истёк. Для возобновления доступа, пожалуйста, продлите свою подписку. Это займет всего несколько минут!
+        ///
+        ///Если у вас возникли вопросы или нужна помощь, свяжитесь с нами. Мы всегда готовы вам помочь. 
+        ///
+        ///Спасибо, что выбираете нас! 💙.
+        /// </summary>
+        internal static string ExpiredMessage {
+            get {
+                return ResourceManager.GetString("ExpiredMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Месяц | 6 месяцев | 12 месяцев | 🎁 Пробный период | ⬅️ Назад.
         /// </summary>
         internal static string KeyboardAccess {
             get {
                 return ResourceManager.GetString("KeyboardAccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Подписка|Профиль.
+        /// </summary>
+        internal static string KeyboardExpired {
+            get {
+                return ResourceManager.GetString("KeyboardExpired", resourceCulture);
             }
         }
         

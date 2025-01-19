@@ -1,6 +1,5 @@
 ﻿using System.Text;
 using System.Text.Json;
-using System.Net.Http;
 using Microsoft.Extensions.Configuration;
 using TelegramVPNBot.Models;
 

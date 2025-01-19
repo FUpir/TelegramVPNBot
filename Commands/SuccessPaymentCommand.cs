@@ -14,7 +14,7 @@ namespace TelegramVPNBot.Commands
         {
             if (update.Message?.From == null)
                 return;
-
+            
             var userData = update.Message.From;
             var user = await authorizationService.GetAuthorizedUserAsync(userData);
 
