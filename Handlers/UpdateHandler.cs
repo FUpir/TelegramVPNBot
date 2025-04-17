@@ -10,7 +10,8 @@ namespace TelegramVPNBot.Handlers
     {
         private readonly Dictionary<string, ICommand> _commands = new()
         {
-            { "/start", new StartCommand(authorizationService) }
+            { "/start", new StartCommand(authorizationService) },
+            { "/user", new MonitorLogsCommand(authorizationService) }
         };
 
         private readonly Dictionary<string, ICommand> _callbackQueryList = new()

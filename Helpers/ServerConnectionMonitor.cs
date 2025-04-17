@@ -1,10 +1,13 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Renci.SshNet;
 using System.Text;
+using MongoDB.Bson;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.ReplyMarkups;
+using TelegramVPNBot.Interfaces;
+using TelegramVPNBot.Models;
 using TelegramVPNBot.Services;
 
 namespace TelegramVPNBot.Helpers
@@ -16,9 +19,10 @@ namespace TelegramVPNBot.Helpers
         private readonly string _serverPassword;
         private readonly long _adminChatId;
         private readonly ITelegramBotClient _botClient;
+        private readonly IAuthorizationService _authorizationService;
         private Message? _lastMessage = null;
 
-        public ServerConnectionMonitor(ITelegramBotClient botClient)
+        public ServerConnectionMonitor(ITelegramBotClient botClient, IAuthorizationService authorizationService)
         {
             var configuration = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
@@ -27,10 +31,10 @@ namespace TelegramVPNBot.Helpers
             _serverIp = configuration.GetValue<string>("Server:Ip");
             _serverUser = configuration.GetValue<string>("Server:User");
             _serverPassword = configuration.GetValue<string>("Server:Password");
-
             _adminChatId = configuration.GetValue<long>("Telegram:OwnerId");
 
             _botClient = botClient;
+            _authorizationService = authorizationService;
         }
 
         public async Task StartAsync(CancellationToken cancellationToken)
@@ -48,7 +52,7 @@ namespace TelegramVPNBot.Helpers
                     Console.WriteLine($"Error during monitoring: {ex.Message}");
                 }
 
-                await Task.Delay(TimeSpan.FromSeconds(5), cancellationToken);
+                await Task.Delay(TimeSpan.FromMinutes(1), cancellationToken);
             }
 
             Console.WriteLine("ServerConnectionMonitor stopped.");
@@ -107,6 +111,15 @@ namespace TelegramVPNBot.Helpers
                             messageBuilder.AppendLine("No active connections.");
                         }
                         messageBuilder.AppendLine();
+
+                        if (ObjectId.TryParse(key.name, out ObjectId userId))
+                        {
+                            await _authorizationService.AddConnectionHistoryAsync(userId, new Connection
+                            {
+                                IpsList = connectedIps?.ToList(),
+                                DateTimeUtc = DateTime.UtcNow
+                            });
+                        }
                     }
 
                     client.Disconnect();

@@ -8,6 +8,11 @@ namespace TelegramVPNBot.Services
 {
     public class AuthorizationService(IUserRepository userRepository) : IAuthorizationService
     {
+        public async Task<List<Models.User>?> GetUsersAsync()
+        {
+            return await userRepository.GetUsersAsync();
+        }
+
         public async Task<Models.User> GetAuthorizedUserAsync(User userChat)
         {
             var user = await userRepository.GetUserByTelegramIdAsync(userChat.Id);
@@ -45,6 +50,18 @@ namespace TelegramVPNBot.Services
         public async Task UpdateIsFreeAvailableAsync(ObjectId id, bool isFreeAvailable)
         {
             await userRepository.UpdateIsFreeAvailableAsync(id, isFreeAvailable);
+        }
+
+        public async Task AddConnectionHistoryAsync(ObjectId id, Connection connection)
+        {
+            await userRepository.AddConnectionHistoryAsync(id, connection);
+        }
+
+        public async Task<List<Connection>?> GetConnectionHistoryAsync(ObjectId userId)
+        {
+            var user = await userRepository.GetUserByIdAsync(userId);
+
+            return user?.ConnectionHistory;
         }
     }
 }

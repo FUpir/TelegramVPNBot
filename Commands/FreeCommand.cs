@@ -45,17 +45,14 @@ namespace TelegramVPNBot.Commands
                 await authorizationService.UpdateOutlineKeyAsync(user.Id, key.id);
             }
 
-            var inlineKeyboard = new InlineKeyboardMarkup(new[]
-            {
-                new[]
-                {
+            var inlineKeyboard = new InlineKeyboardMarkup([
+                [
                     new InlineKeyboardButton(menuKeys[0]) { CallbackData = "subscription" }
-                },
-                new[]
-                {
+                ],
+                [
                     new InlineKeyboardButton(menuKeys[1]) { CallbackData = "start" }
-                }
-            });
+                ]
+            ]);
 
             try
             {

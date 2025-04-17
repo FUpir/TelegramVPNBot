@@ -16,6 +16,11 @@ namespace TelegramVPNBot.Repositories
     {
         private readonly IMongoCollection<User> _users = context.Users;
 
+        public async Task<List<User>?> GetUsersAsync()
+        {
+            return await _users.Find(user => true).ToListAsync();
+        }
+
         public async Task<User> GetUserByIdAsync(ObjectId id)
         {
             return await _users.Find(user => user.Id == id).FirstOrDefaultAsync();
@@ -62,6 +67,12 @@ namespace TelegramVPNBot.Repositories
         public async Task UpdateIsFreeAvailableAsync(ObjectId id, bool isFreeAvailable)
         {
             var update = Builders<User>.Update.Set(user => user.IsFreeAvailable, isFreeAvailable);
+            await _users.UpdateOneAsync(user => user.Id == id, update);
+        }
+
+        public async Task AddConnectionHistoryAsync(ObjectId id, Connection connection)
+        {
+            var update = Builders<User>.Update.Push(user => user.ConnectionHistory, connection);
             await _users.UpdateOneAsync(user => user.Id == id, update);
         }
     }

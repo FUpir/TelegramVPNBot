@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Telegram.Bot;
 using TelegramVPNBot.DataBase;
 using TelegramVPNBot.Handlers;
@@ -28,7 +27,7 @@ namespace TelegramVPNBot
                 .AddSingleton<UpdateHandler>()
                 .AddSingleton<ITelegramBotClient>(_ =>
                 {
-                    var botToken = configuration.GetValue<string>("Telegram:Token");
+                    var botToken = configuration.GetValue<string>("Telegram:Token") ?? throw new Exception();
                     return new TelegramBotClient(botToken);
                 })
                 .AddSingleton<SubscriptionCleanupHelper>()
@@ -66,7 +65,7 @@ namespace TelegramVPNBot
 
             await waitForShutdown.Task;
 
-            cts.Cancel();
+            await cts.CancelAsync();
             await cleanupTask;
             await monitorTask;
 

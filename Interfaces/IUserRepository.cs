@@ -10,6 +10,7 @@ namespace TelegramVPNBot.Interfaces
 {
     public interface IUserRepository
     {
+        Task<List<Models.User>?> GetUsersAsync();
         Task<User> GetUserByIdAsync(ObjectId id);
         Task<User?> GetUserByTelegramIdAsync(long telegramId);
         Task CreateUserAsync(User user);
@@ -19,5 +20,6 @@ namespace TelegramVPNBot.Interfaces
         Task UpdateOutlineKeyAsync(ObjectId id, string? newOutlineKey);
         Task<List<User>> GetExpiredUsersAsync(DateTime currentDateUtc);
         Task UpdateIsFreeAvailableAsync(ObjectId id, bool isFreeAvailable);
+        Task AddConnectionHistoryAsync(ObjectId id, Connection connection);
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using System.Resources;
+﻿using System.Resources;
 using TelegramVPNBot.Enums;
 
 namespace TelegramVPNBot.Helpers
