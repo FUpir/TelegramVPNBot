@@ -12,7 +12,7 @@ namespace TelegramVPNBot.Commands
 {
     public class PaymentCommand(IAuthorizationService authorizationService) : ICommand
     {
-        private const int MonthPrice = 25;
+        private const int MonthPrice = 150;
         private int _totalPrice;
         private int _monthsCount;
 
