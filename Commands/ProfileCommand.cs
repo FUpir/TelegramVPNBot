@@ -38,10 +38,9 @@ namespace TelegramVPNBot.Commands
                 {
                     new InlineKeyboardButton(menuKeys[0]) { CallbackData = "subscription" }
                 },
-                new[]
-                {
+                [
                     new InlineKeyboardButton(menuKeys[1]) { CallbackData = "start" }
-                }
+                ]
             });
 
             try
