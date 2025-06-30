@@ -23,22 +23,10 @@ namespace TelegramVPNBot.Commands
 
             var inlineKeyboard = new InlineKeyboardMarkup(new[]
             {
-                new[]
-                {
-                    new InlineKeyboardButton(menuKeys[3]) { CallbackData = "free" }
-                },
-                new[]
-                {
-                    new InlineKeyboardButton(menuKeys[0]) { CallbackData = "month1" }
-                },
-                new[]
-                {
-                    new InlineKeyboardButton(menuKeys[1]) { CallbackData = "month6" }
-                },
-                new[]
-                {
-                    new InlineKeyboardButton(menuKeys[2]) { CallbackData = "month12" }
-                },
+                [new InlineKeyboardButton(menuKeys[3]) { CallbackData = "free" }],
+                [new InlineKeyboardButton(menuKeys[0]) { CallbackData = "month1" }],
+                [new InlineKeyboardButton(menuKeys[1]) { CallbackData = "month6" }],
+                [new InlineKeyboardButton(menuKeys[2]) { CallbackData = "month12" }],
                 new[]
                 {
                     new InlineKeyboardButton(menuKeys[4]) { CallbackData = "start" }

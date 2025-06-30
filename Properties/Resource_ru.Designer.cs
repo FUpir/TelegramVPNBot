@@ -61,7 +61,7 @@ namespace TelegramVPNBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://lh3.googleusercontent.com/fife/ALs6j_FJDmdxtUSbAuLjXAoSOPDmeA_UVBBCIvIRayVbSJmG3JHp6enlttqnYcQtPTtvYJIOniygzFASeWibYjD-GxkpGny2gTAqpCVo4el25n9hK6Jx8ZtWlbCp7XCYuh-tkGle7B1ERSbDiHa4RPBAmQFFDnBe_yktSWEenGYeoziIkYP3DPOsB0J81BKY25_Tq4AhNZLvqdC924Nd-XHeKRjniKiA2dp1ToaQsV0JdzvLERFh_r_0eVaDvv_BwV0FsDhTOoCD8FwumruyVwcm5Z2RClFB50xww469q0VX2UuEzrUo0q1NN5XEA6j5zIgcJh-0MzLpJkhJlZamSdfqAQDqAGw7HOJ939ZVJ10N_DaWFq9ViXnJdJBuYJRGH_nBJzk0xQtGD3463_DHx_1NcOzUxWXu1uz_RVWfMEfyPQPQn22jAWVox_K1j5FskQZo5-PxIlVMbjtFWvNKnd-md [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to https://lh3.googleusercontent.com/d/1171TdlkKJsmD3s7ZTijA1cjF40T155lr.
         /// </summary>
         internal static string AccessImg {
             get {
@@ -218,7 +218,7 @@ namespace TelegramVPNBot.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://lh3.googleusercontent.com/fife/ALs6j_FJDmdxtUSbAuLjXAoSOPDmeA_UVBBCIvIRayVbSJmG3JHp6enlttqnYcQtPTtvYJIOniygzFASeWibYjD-GxkpGny2gTAqpCVo4el25n9hK6Jx8ZtWlbCp7XCYuh-tkGle7B1ERSbDiHa4RPBAmQFFDnBe_yktSWEenGYeoziIkYP3DPOsB0J81BKY25_Tq4AhNZLvqdC924Nd-XHeKRjniKiA2dp1ToaQsV0JdzvLERFh_r_0eVaDvv_BwV0FsDhTOoCD8FwumruyVwcm5Z2RClFB50xww469q0VX2UuEzrUo0q1NN5XEA6j5zIgcJh-0MzLpJkhJlZamSdfqAQDqAGw7HOJ939ZVJ10N_DaWFq9ViXnJdJBuYJRGH_nBJzk0xQtGD3463_DHx_1NcOzUxWXu1uz_RVWfMEfyPQPQn22jAWVox_K1j5FskQZo5-PxIlVMbjtFWvNKnd-md [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to https://lh3.googleusercontent.com/d/1KjgLsgLqqY0EdIUwgwp8NRy7jCtXWYGq.
         /// </summary>
         internal static string StartImg {
             get {
