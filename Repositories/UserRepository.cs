@@ -69,11 +69,5 @@ namespace TelegramVPNBot.Repositories
             var update = Builders<User>.Update.Set(user => user.IsFreeAvailable, isFreeAvailable);
             await _users.UpdateOneAsync(user => user.Id == id, update);
         }
-
-        public async Task AddConnectionHistoryAsync(ObjectId id, Connection connection)
-        {
-            var update = Builders<User>.Update.Push(user => user.ConnectionHistory, connection);
-            await _users.UpdateOneAsync(user => user.Id == id, update);
-        }
     }
 }

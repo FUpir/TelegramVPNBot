@@ -11,7 +11,8 @@ namespace TelegramVPNBot.Handlers
         private readonly Dictionary<string, ICommand> _commands = new()
         {
             { "/start", new StartCommand(authorizationService) },
-            { "/user", new MonitorLogsCommand(authorizationService) }
+            { "/user", new MonitorLogsCommand(authorizationService) },
+            { "/announcement", new AnnouncementCommand(authorizationService) }
         };
 
         private readonly Dictionary<string, ICommand> _callbackQueryList = new()
@@ -53,10 +54,17 @@ namespace TelegramVPNBot.Handlers
             if (update.Message?.SuccessfulPayment != null && _callbackQueryList.TryGetValue("SuccessPayment", out var successPayment))
             {
                 await successPayment.ExecuteAsync(update, botClient);
+                return;
             }
-            if (update.Message?.Text != null && _commands.TryGetValue(update.Message.Text, out var command))
+
+            if (update.Message?.Text is not { } messageText)
+                return;
+
+            var commandEntry = _commands.FirstOrDefault(c => messageText.StartsWith(c.Key));
+
+            if (commandEntry.Key != null)
             {
-                await command.ExecuteAsync(update, botClient);
+                await commandEntry.Value.ExecuteAsync(update, botClient);
             }
         }
 

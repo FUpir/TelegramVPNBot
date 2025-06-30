@@ -54,7 +54,7 @@ namespace TelegramVPNBot.Services
 
         public async Task AddConnectionHistoryAsync(ObjectId id, Connection connection)
         {
-            await userRepository.AddConnectionHistoryAsync(id, connection);
+            
         }
 
         public async Task<List<Connection>?> GetConnectionHistoryAsync(ObjectId userId)

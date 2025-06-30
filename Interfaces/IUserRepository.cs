@@ -20,6 +20,5 @@ namespace TelegramVPNBot.Interfaces
         Task UpdateOutlineKeyAsync(ObjectId id, string? newOutlineKey);
         Task<List<User>> GetExpiredUsersAsync(DateTime currentDateUtc);
         Task UpdateIsFreeAvailableAsync(ObjectId id, bool isFreeAvailable);
-        Task AddConnectionHistoryAsync(ObjectId id, Connection connection);
     }
 }
