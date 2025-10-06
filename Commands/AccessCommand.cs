@@ -21,17 +21,13 @@ namespace TelegramVPNBot.Commands
             var startImg = LanguageHelper.GetLocalizedMessage(user.Settings.Language, "AccessImg");
             var menuKeys = LanguageHelper.GetLocalizedMessage(user.Settings.Language, "KeyboardAccess").Split('|');
 
-            var inlineKeyboard = new InlineKeyboardMarkup(new[]
-            {
+            var inlineKeyboard = new InlineKeyboardMarkup([
                 [new InlineKeyboardButton(menuKeys[3]) { CallbackData = "free" }],
                 [new InlineKeyboardButton(menuKeys[0]) { CallbackData = "month1" }],
                 [new InlineKeyboardButton(menuKeys[1]) { CallbackData = "month6" }],
                 [new InlineKeyboardButton(menuKeys[2]) { CallbackData = "month12" }],
-                new[]
-                {
-                    new InlineKeyboardButton(menuKeys[4]) { CallbackData = "start" }
-                }
-            });
+                [new InlineKeyboardButton(menuKeys[4]) { CallbackData = "start" }]
+            ]);
 
             try
             {
@@ -48,7 +44,7 @@ namespace TelegramVPNBot.Commands
                     replyMarkup: inlineKeyboard
                 );
             }
-            catch (ApiRequestException ex)
+            catch (ApiRequestException)
             {
                 await botClient.SendPhoto(
                     chatId: user.TelegramId,
