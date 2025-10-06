@@ -7,8 +7,8 @@ namespace TelegramVPNBot.Services;
 
 public static class OutlineVpnService
 {
-    private static readonly HttpClient _httpClient;
-    private static readonly string _apiUrl;
+    private static readonly HttpClient HttpClient;
+    private static readonly string ApiUrl;
 
     static OutlineVpnService()
     {
@@ -21,15 +21,15 @@ public static class OutlineVpnService
             ServerCertificateCustomValidationCallback = (_, _, _, _) => true
         };
 
-        _httpClient = new HttpClient(handler);
-        _apiUrl = configuration.GetValue<string>("OutLine:Url")!.TrimEnd('/');
+        HttpClient = new HttpClient(handler);
+        ApiUrl = configuration.GetValue<string>("OutLine:Url")!.TrimEnd('/');
     }
 
     public static async Task<List<VpnKey>?> GetKeysAsync()
     {
         try
         {
-            var response = await _httpClient.GetAsync($"{_apiUrl}/access-keys");
+            var response = await HttpClient.GetAsync($"{ApiUrl}/access-keys");
             response.EnsureSuccessStatusCode();
             var json = await response.Content.ReadAsStringAsync();
             var keysResponse = JsonSerializer.Deserialize<GetKeysResponse>(json);
@@ -79,7 +79,7 @@ public static class OutlineVpnService
             "application/json"
         );
 
-        var response = await _httpClient.PostAsync($"{_apiUrl}/access-keys", content);
+        var response = await HttpClient.PostAsync($"{ApiUrl}/access-keys", content);
         response.EnsureSuccessStatusCode();
 
         var json = await response.Content.ReadAsStringAsync();
@@ -90,7 +90,7 @@ public static class OutlineVpnService
 
     public static async Task DeleteKeyAsync(string keyId)
     {
-        var response = await _httpClient.DeleteAsync($"{_apiUrl}/access-keys/{keyId}");
+        var response = await HttpClient.DeleteAsync($"{ApiUrl}/access-keys/{keyId}");
         response.EnsureSuccessStatusCode();
     }
 
@@ -101,13 +101,13 @@ public static class OutlineVpnService
             Encoding.UTF8,
             "application/json");
 
-        var response = await _httpClient.PutAsync($"{_apiUrl}/access-keys/{keyId}/name", content);
+        var response = await HttpClient.PutAsync($"{ApiUrl}/access-keys/{keyId}/name", content);
         response.EnsureSuccessStatusCode();
     }
 
     public static async Task<VpnServerMetrics?> GetMetricsAsync()
     {
-        var response = await _httpClient.GetAsync($"{_apiUrl}/metrics/transfer");
+        var response = await HttpClient.GetAsync($"{ApiUrl}/metrics/transfer");
         response.EnsureSuccessStatusCode();
         var json = await response.Content.ReadAsStringAsync();
         return JsonSerializer.Deserialize<VpnServerMetrics>(json);
@@ -120,13 +120,13 @@ public static class OutlineVpnService
             Encoding.UTF8,
             "application/json");
 
-        var response = await _httpClient.PutAsync($"{_apiUrl}/access-keys/{keyId}/data-limit", content);
+        var response = await HttpClient.PutAsync($"{ApiUrl}/access-keys/{keyId}/data-limit", content);
         response.EnsureSuccessStatusCode();
     }
 
     public static async Task RemoveDataLimitAsync(string keyId)
     {
-        var response = await _httpClient.DeleteAsync($"{_apiUrl}/access-keys/{keyId}/data-limit");
+        var response = await HttpClient.DeleteAsync($"{ApiUrl}/access-keys/{keyId}/data-limit");
         response.EnsureSuccessStatusCode();
     }
 
@@ -134,7 +134,7 @@ public static class OutlineVpnService
     {
         try
         {
-            var response = await _httpClient.GetAsync($"{_apiUrl}/access-keys/{keyId}");
+            var response = await HttpClient.GetAsync($"{ApiUrl}/access-keys/{keyId}");
             response.EnsureSuccessStatusCode();
             var json = await response.Content.ReadAsStringAsync();
             return JsonSerializer.Deserialize<VpnKey>(json);

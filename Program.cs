@@ -1,5 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Configuration;
 using Telegram.Bot;
 using TelegramVPNBot.DataBase;
 using TelegramVPNBot.Handlers;
@@ -14,62 +15,36 @@ namespace TelegramVPNBot
     {
         public static async Task Main(string[] args)
         {
-            var configuration = new ConfigurationBuilder()
-                .SetBasePath(AppContext.BaseDirectory)
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            var host = Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration(config =>
+                {
+                    config.SetBasePath(AppContext.BaseDirectory);
+                    config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+                })
+                .ConfigureServices((context, services) =>
+                {
+                    var configuration = context.Configuration;
+
+                    services.AddSingleton<IConfiguration>(configuration);
+                    services.AddSingleton<MongoDbContext>();
+                    services.AddSingleton<IUserRepository, UserRepository>();
+                    services.AddSingleton<IAuthorizationService, AuthorizationService>();
+                    services.AddSingleton<UpdateHandler>();
+                    services.AddSingleton<SubscriptionCleanupHelper>();
+                    services.AddSingleton<ServerConnectionMonitor>();
+
+                    services.AddSingleton<ITelegramBotClient>(_ =>
+                    {
+                        var botToken = configuration.GetValue<string>("Telegram:Token")
+                            ?? throw new Exception("Telegram token not found in configuration.");
+                        return new TelegramBotClient(botToken);
+                    });
+
+                    services.AddHostedService<TelegramBotHostedService>();
+                })
                 .Build();
 
-            var serviceProvider = new ServiceCollection()
-                .AddSingleton<IConfiguration>(configuration)
-                .AddSingleton<MongoDbContext>()
-                .AddSingleton<IUserRepository, UserRepository>()
-                .AddSingleton<IAuthorizationService, AuthorizationService>()
-                .AddSingleton<UpdateHandler>()
-                .AddSingleton<ITelegramBotClient>(_ =>
-                {
-                    var botToken = configuration.GetValue<string>("Telegram:Token") ?? throw new Exception();
-                    return new TelegramBotClient(botToken);
-                })
-                .AddSingleton<SubscriptionCleanupHelper>()
-                .AddSingleton<ServerConnectionMonitor>()
-                .BuildServiceProvider();
-
-            var botClient = serviceProvider.GetRequiredService<ITelegramBotClient>();
-            var updateHandler = serviceProvider.GetRequiredService<UpdateHandler>();
-            var cleanupService = serviceProvider.GetRequiredService<SubscriptionCleanupHelper>();
-            var severMonitor = serviceProvider.GetRequiredService<ServerConnectionMonitor>();
-
-            var cts = new CancellationTokenSource();
-
-            botClient.StartReceiving(
-                updateHandler: async (bot, update, token) =>
-                {
-                    await updateHandler.HandleUpdateAsync(bot, update, token);
-                },
-                errorHandler: (_, exception, token) =>
-                {
-                    Console.WriteLine($"Error: {exception.Message}");
-                    return Task.CompletedTask;
-                },
-                cancellationToken: cts.Token
-            );
-
-            Console.WriteLine("Bot is running...");
-
-            var cleanupTask = cleanupService.StartAsync(cts.Token);
-            var monitorTask = severMonitor.StartAsync(cts.Token);
-
-            var waitForShutdown = new TaskCompletionSource();
-            AppDomain.CurrentDomain.ProcessExit += (_, _) => waitForShutdown.TrySetResult();
-            Console.CancelKeyPress += (_, _) => waitForShutdown.TrySetResult();
-
-            await waitForShutdown.Task;
-
-            await cts.CancelAsync();
-            await cleanupTask;
-            await monitorTask;
-
-            Console.WriteLine("Application stopped.");
+            await host.RunAsync();
         }
     }
 }
