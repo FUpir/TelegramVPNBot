@@ -25,7 +25,8 @@ namespace TelegramVPNBot.Helpers
         public ServerConnectionMonitor(ITelegramBotClient botClient, IAuthorizationService authorizationService)
         {
             var configuration = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json")
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddEnvironmentVariables()
                 .Build();
 
             _serverIp = configuration.GetValue<string>("Server:Ip");
