@@ -1,5 +1,4 @@
-﻿using BuyStarsBot;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
@@ -8,6 +7,7 @@ using TelegramVPNBot.DataBase;
 using TelegramVPNBot.Handlers;
 using TelegramVPNBot.Helpers;
 using TelegramVPNBot.Interfaces;
+using TelegramVPNBot.Models;
 using TelegramVPNBot.Repositories;
 using TelegramVPNBot.Services;
 
