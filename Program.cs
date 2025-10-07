@@ -1,6 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+﻿using BuyStarsBot;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using Telegram.Bot;
 using TelegramVPNBot.DataBase;
 using TelegramVPNBot.Handlers;
@@ -9,42 +11,82 @@ using TelegramVPNBot.Interfaces;
 using TelegramVPNBot.Repositories;
 using TelegramVPNBot.Services;
 
-namespace TelegramVPNBot
-{
-    public class Program
+var host = Host.CreateDefaultBuilder(args)
+    .ConfigureAppConfiguration((context, config) =>
     {
-        public static async Task Main(string[] args)
-        {
-            var host = Host.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration(config =>
+        config.SetBasePath(AppContext.BaseDirectory)
+              .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+    })
+    .ConfigureServices((context, services) =>
+    {
+        services.Configure<BotConfiguration>(context.Configuration.GetSection("BotConfiguration"));
+
+        services.AddHttpClient("telegram_bot_client").RemoveAllLoggers()
+                .AddTypedClient<ITelegramBotClient>((httpClient, sp) =>
                 {
-                    config.SetBasePath(AppContext.BaseDirectory);
-                    config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-                })
-                .ConfigureServices((context, services) =>
-                {
-                    var configuration = context.Configuration;
+                    var botConfiguration = sp.GetService<IOptions<BotConfiguration>>()?.Value;
+                    ArgumentNullException.ThrowIfNull(botConfiguration);
+                    TelegramBotClientOptions options = new(botConfiguration.BotToken);
+                    return new TelegramBotClient(options, httpClient);
+                });
 
-                    services.AddSingleton<IConfiguration>(configuration);
-                    services.AddSingleton<MongoDbContext>();
-                    services.AddSingleton<IUserRepository, UserRepository>();
-                    services.AddSingleton<IAuthorizationService, AuthorizationService>();
-                    services.AddSingleton<UpdateHandler>();
-                    services.AddSingleton<SubscriptionCleanupHelper>();
-                    services.AddSingleton<ServerConnectionMonitor>();
+        services.AddMemoryCache();
 
-                    services.AddSingleton<ITelegramBotClient>(_ =>
-                    {
-                        var botToken = configuration.GetValue<string>("Telegram:Token")
-                            ?? throw new Exception("Telegram token not found in configuration.");
-                        return new TelegramBotClient(botToken);
-                    });
+        services.AddSingleton<MongoDbContext>();
+        services.AddSingleton<IUserRepository, UserRepository>();
+        services.AddSingleton<IAuthorizationService, AuthorizationService>();
+        services.AddSingleton<UpdateHandler>();
+        services.AddSingleton<SubscriptionCleanupHelper>();
+        services.AddSingleton<ServerConnectionMonitor>();
 
-                    services.AddHostedService<TelegramBotHostedService>();
-                })
-                .Build();
+        services.AddHostedService<TelegramBotHostedService>();
+    })
+    .Build();
 
-            await host.RunAsync();
-        }
+await host.RunAsync();
+
+
+public class TelegramBotHostedService(
+    ITelegramBotClient botClient,
+    UpdateHandler updateHandler,
+    SubscriptionCleanupHelper cleanupService,
+    ServerConnectionMonitor serverMonitor)
+    : IHostedService
+{
+    private CancellationTokenSource? _cts;
+
+    public Task StartAsync(CancellationToken cancellationToken)
+    {
+        Console.WriteLine("Bot is starting...");
+
+        _cts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+
+        botClient.StartReceiving(
+            updateHandler: async (bot, update, token) =>
+            {
+                await updateHandler.HandleUpdateAsync(bot, update, token);
+            },
+            errorHandler: (_, exception, _) =>
+            {
+                Console.WriteLine($"Error: {exception.Message}");
+                return Task.CompletedTask;
+            },
+            cancellationToken: _cts.Token
+        );
+
+        Console.WriteLine("Bot is running...");
+
+        _ = Task.Run(() => cleanupService.StartAsync(_cts.Token), _cts.Token);
+        _ = Task.Run(() => serverMonitor.StartAsync(_cts.Token), _cts.Token);
+
+        return Task.CompletedTask;
+    }
+
+    public Task StopAsync(CancellationToken cancellationToken)
+    {
+        Console.WriteLine("Stopping bot...");
+        _cts?.Cancel();
+        Console.WriteLine("Application stopped.");
+        return Task.CompletedTask;
     }
 }
