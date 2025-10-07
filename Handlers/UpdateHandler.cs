@@ -3,28 +3,40 @@ using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using TelegramVPNBot.Commands;
 using TelegramVPNBot.Interfaces;
+using TelegramVPNBot.Services;
 
 namespace TelegramVPNBot.Handlers
 {
-    public class UpdateHandler(IAuthorizationService authorizationService)
+    public class UpdateHandler
     {
-        private readonly Dictionary<string, ICommand> _commands = new()
-        {
-            { "/start", new StartCommand(authorizationService) },
-            { "/user", new MonitorLogsCommand(authorizationService) },
-            { "/announcement", new AnnouncementCommand(authorizationService) }
-        };
+        private readonly IAuthorizationService _authorizationService;
+        private readonly OutlineVpnService _outlineVpnService;
+        private readonly Dictionary<string, ICommand> _commands;
+        private readonly Dictionary<string, ICommand> _callbackQueryList;
 
-        private readonly Dictionary<string, ICommand> _callbackQueryList = new()
+        public UpdateHandler(IAuthorizationService authorizationService, OutlineVpnService outlineVpnService)
         {
-            { "access", new AccessCommand(authorizationService) },
-            { "start", new StartCommand(authorizationService) },
-            { "profile", new ProfileCommand(authorizationService) },
-            { "month", new PaymentCommand(authorizationService) },
-            { "SuccessPayment", new SuccessPaymentCommand(authorizationService) },
-            { "subscription", new SubscriptionCommand(authorizationService) },
-            { "free", new FreeCommand(authorizationService) }
-        };
+            _authorizationService = authorizationService;
+            _outlineVpnService = outlineVpnService;
+
+            _commands = new Dictionary<string, ICommand>
+            {
+                { "/start", new StartCommand(_authorizationService) },
+                { "/user", new MonitorLogsCommand(_authorizationService) },
+                { "/announcement", new AnnouncementCommand(_authorizationService) }
+            };
+
+            _callbackQueryList = new Dictionary<string, ICommand>
+            {
+                { "access", new AccessCommand(_authorizationService) },
+                { "start", new StartCommand(_authorizationService) },
+                { "profile", new ProfileCommand(_authorizationService) },
+                { "month", new PaymentCommand(_authorizationService) },
+                { "SuccessPayment", new SuccessPaymentCommand(_authorizationService, _outlineVpnService) },
+                { "subscription", new SubscriptionCommand(_authorizationService, _outlineVpnService) },
+                { "free", new FreeCommand(_authorizationService, _outlineVpnService) }
+            };
+        }
 
         public async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
         {

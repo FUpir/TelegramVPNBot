@@ -9,7 +9,7 @@ using Telegram.Bot.Exceptions;
 
 namespace TelegramVPNBot.Commands
 {
-    public class SubscriptionCommand(IAuthorizationService authorizationService) : ICommand
+    public class SubscriptionCommand(IAuthorizationService authorizationService, OutlineVpnService outlineVpnService) : ICommand
     {
         public async Task ExecuteAsync(Update update, ITelegramBotClient botClient)
         {
@@ -26,10 +26,10 @@ namespace TelegramVPNBot.Commands
             var status = SubscriptionStatusHelper.GetSubscriptionStatusMessage(user.SubscriptionEndDateUtc, user.Settings.Language);
             var activeTutorialUrl = LanguageHelper.GetLocalizedMessage(user.Settings.Language, "ActiveTutorial");
 
-            var keyInfo = await OutlineVpnService.GetKeyByIdAsync(user.OutlineKey);
+            var keyInfo = await outlineVpnService.GetKeyByIdAsync(user.OutlineKey);
             var accessUrl = keyInfo.accessUrl;
 
-            var usageKey = await OutlineVpnService.GetUsageByKeyIdAsync(keyInfo.id);
+            var usageKey = await outlineVpnService.GetUsageByKeyIdAsync(keyInfo.id);
             var accessUrlSpoiler = $"`{accessUrl}`";
 
             var message = string.Format(

@@ -20,22 +20,23 @@ namespace TelegramVPNBot.Helpers
         private readonly long _adminChatId;
         private readonly ITelegramBotClient _botClient;
         private readonly IAuthorizationService _authorizationService;
+        private readonly OutlineVpnService _outlineVpnService;
         private Message? _lastMessage = null;
 
-        public ServerConnectionMonitor(ITelegramBotClient botClient, IAuthorizationService authorizationService)
+        public ServerConnectionMonitor(
+            ITelegramBotClient botClient, 
+            IAuthorizationService authorizationService,
+            OutlineVpnService outlineVpnService,
+            IConfiguration configuration)
         {
-            var configuration = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddEnvironmentVariables()
-                .Build();
-
-            _serverIp = configuration.GetValue<string>("Server:Ip");
-            _serverUser = configuration.GetValue<string>("Server:User");
-            _serverPassword = configuration.GetValue<string>("Server:Password");
+            _serverIp = configuration.GetValue<string>("Server:Ip")!;
+            _serverUser = configuration.GetValue<string>("Server:User")!;
+            _serverPassword = configuration.GetValue<string>("Server:Password")!;
             _adminChatId = configuration.GetValue<long>("Telegram:OwnerId");
 
             _botClient = botClient;
             _authorizationService = authorizationService;
+            _outlineVpnService = outlineVpnService;
         }
 
         public async Task StartAsync(CancellationToken cancellationToken)
@@ -61,7 +62,7 @@ namespace TelegramVPNBot.Helpers
 
         private async Task MonitorAllKeysAsync()
         {
-            var keys = await OutlineVpnService.GetKeysAsync();
+            var keys = await _outlineVpnService.GetKeysAsync();
 
             var inlineKeyboard = new InlineKeyboardMarkup(
                 keys.Select(key => new[]
@@ -89,7 +90,7 @@ namespace TelegramVPNBot.Helpers
 
                         var connectedIps = result.Split('\n', StringSplitOptions.RemoveEmptyEntries);
 
-                        var usageKey = await OutlineVpnService.GetUsageByKeyIdAsync(key.id);
+                        var usageKey = await _outlineVpnService.GetUsageByKeyIdAsync(key.id);
 
                         messageBuilder.AppendLine($"🔑 *Key ID*: `{key.id}`");
                         messageBuilder.AppendLine($"📛 *Name*: `{key.name}`");

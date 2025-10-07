@@ -14,6 +14,7 @@ using TelegramVPNBot.Services;
 var host = Host.CreateDefaultBuilder(args)
     .ConfigureAppConfiguration((context, config) =>
     {
+        config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
         config.AddEnvironmentVariables();
     })
     .ConfigureServices((context, services) =>
@@ -34,6 +35,7 @@ var host = Host.CreateDefaultBuilder(args)
         services.AddSingleton<MongoDbContext>();
         services.AddSingleton<IUserRepository, UserRepository>();
         services.AddSingleton<IAuthorizationService, AuthorizationService>();
+        services.AddSingleton<OutlineVpnService>();
         services.AddSingleton<UpdateHandler>();
         services.AddSingleton<SubscriptionCleanupHelper>();
         services.AddSingleton<ServerConnectionMonitor>();

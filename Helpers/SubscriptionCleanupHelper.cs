@@ -5,7 +5,7 @@ using TelegramVPNBot.Services;
 
 namespace TelegramVPNBot.Helpers
 {
-    public class SubscriptionCleanupHelper(IUserRepository userRepository, ITelegramBotClient botClient)
+    public class SubscriptionCleanupHelper(IUserRepository userRepository, ITelegramBotClient botClient, OutlineVpnService outlineVpnService)
     {
         public async Task StartAsync(CancellationToken cancellationToken)
         {
@@ -36,7 +36,7 @@ namespace TelegramVPNBot.Helpers
             {
                 if (!string.IsNullOrEmpty(user.OutlineKey))
                 {
-                    await OutlineVpnService.DeleteKeyAsync(user.OutlineKey);
+                    await outlineVpnService.DeleteKeyAsync(user.OutlineKey);
                     await userRepository.UpdateOutlineKeyAsync(user.Id, null);
 
                     var startMessage = LanguageHelper.GetLocalizedMessage(user.Settings.Language, "ExpiredMessage");

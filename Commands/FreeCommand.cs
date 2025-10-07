@@ -13,7 +13,7 @@ using TelegramVPNBot.Services;
 
 namespace TelegramVPNBot.Commands
 {
-    public class FreeCommand(IAuthorizationService authorizationService) : ICommand
+    public class FreeCommand(IAuthorizationService authorizationService, OutlineVpnService outlineVpnService) : ICommand
     {
         public async Task ExecuteAsync(Update update, ITelegramBotClient botClient)
         {
@@ -41,7 +41,7 @@ namespace TelegramVPNBot.Commands
 
             if (user.OutlineKey == null)
             {
-                var key = await OutlineVpnService.CreateKeyWithIncrementedPortAsync(user.Id.ToString());
+                var key = await outlineVpnService.CreateKeyWithIncrementedPortAsync(user.Id.ToString());
                 await authorizationService.UpdateOutlineKeyAsync(user.Id, key.id);
             }
 
